@@ -1,12 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pos_bengkel/data/datasources/auth_local_datasource.dart';
-import 'package:pos_bengkel/presentation/auth/pages/login_page.dart';
-import 'package:pos_bengkel/presentation/home/bloc/logout/logout_bloc.dart';
 import 'package:pos_bengkel/presentation/home/pages/home_page.dart';
-
+import 'package:pos_bengkel/presentation/setting/pages/setting_page.dart';
 import '../../../core/assets/assets.gen.dart';
 import '../../../core/constants/colors.dart';
 import '../widget/nav_item.dart';
@@ -34,12 +28,7 @@ class _DashboardPageState extends State<DashboardPage> {
     const Center(
       child: Text("History"),
     ),
-    const Center(
-      child: Text("Menu"),
-    )
-    // const HomePage(),
-    // const OrdersPage(),
-    // const ManageMenuPage(),
+    const SettingPage()
   ];
 
   void _onItemTapped(int index) {
@@ -51,44 +40,6 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Dashbaord'),
-        actions: [
-          BlocConsumer<LogoutBloc, LogoutState>(
-            listener: (context, state) {
-              state.maybeMap(
-                orElse: () {},
-                error: (e){
-                  var message = jsonDecode(e.message);
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(message["message"]),
-                      backgroundColor: Colors.red,
-                    ),
-                  );
-                },
-                success: (coba) {
-                  AuthLocalDataSource().removeAuthData();
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const LoginPage(),
-                    ),
-                  );
-                },
-              );
-            },
-            builder: (context, state) {
-              return IconButton(
-                onPressed: () {
-                  context.read<LogoutBloc>().add(const LogoutEvent.logout());
-                },
-                icon: const Icon(Icons.logout_sharp),
-              );
-            },
-          )
-        ],
-      ),
       body: _pages[_selectedIndex],
       bottomNavigationBar: Container(
         padding: const EdgeInsets.all(20.0),

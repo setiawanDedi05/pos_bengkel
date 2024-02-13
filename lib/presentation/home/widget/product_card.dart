@@ -1,10 +1,13 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:pos_bengkel/core/constants/variables.dart';
+import 'package:pos_bengkel/core/extensions/int_ext.dart';
 import '../../../core/components/spaces.dart';
 import '../../../core/constants/colors.dart';
-import '../models/product_model.dart';
+import '../../../data/models/response/products_response_model.dart';
 
 class ProductCard extends StatelessWidget {
-  final ProductModel data;
+  final Product data;
   final VoidCallback onCartButton;
 
   const ProductCard({
@@ -35,11 +38,12 @@ class ProductCard extends StatelessWidget {
             ),
             child: ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(50.0)),
-              child: Image.asset(
-                data.image,
-                width: 68,
-                height: 68,
-                fit: BoxFit.cover,
+              child:
+              CachedNetworkImage(
+                imageUrl: "${Variables.imageBaseUrl}${data.image}",
+                progressIndicatorBuilder: (context, url, downloadProgress) =>
+                    CircularProgressIndicator(value: downloadProgress.progress),
+                errorWidget: (context, url, error) => const Icon(Icons.error, size: 54,),
               ),
             ),
           ),
@@ -54,20 +58,12 @@ class ProductCard extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
           ),
           const SpaceHeight(8.0),
-          Text(
-            data.category.value,
-            style: const TextStyle(
-              color: AppColors.grey,
-              fontSize: 12,
-            ),
-          ),
-          const SpaceHeight(8.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Flexible(
                 child: Text(
-                  data.priceFormat,
+                  int.parse(data.price).currencyFormatRp,
                   style: const TextStyle(
                     fontWeight: FontWeight.w700,
                   ),
@@ -85,7 +81,7 @@ class ProductCard extends StatelessWidget {
                       Icons.add,
                       color: Colors.white,
                     ) //Assets.icons.orders.svg(),
-                ),
+                    ),
               ),
             ],
           ),

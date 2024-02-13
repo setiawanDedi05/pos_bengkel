@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../../core/assets/assets.gen.dart';
-import '../../../core/components/menu_button.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pos_bengkel/presentation/home/widget/product_empty.dart';
 import '../../../core/components/search_input.dart';
 import '../../../core/components/spaces.dart';
-import '../models/product_category_model.dart';
-import '../models/product_model.dart';
+import '../bloc/product/product_bloc.dart';
 import '../widget/product_card.dart';
-import '../widget/product_empty.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,64 +15,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final searchController = TextEditingController();
-  final indexValue = ValueNotifier(0);
-
-  List<ProductModel> searchResults = [];
-  final List<ProductModel> products = [
-    ProductModel(
-      image: Assets.images.f1.path,
-      name: 'Nutty Latte',
-      category: ProductCategoryModel.drink,
-      price: 39000,
-      stock: 10,
-    ),
-    ProductModel(
-      image: Assets.images.f2.path,
-      name: 'Iced Latte',
-      category: ProductCategoryModel.drink,
-      price: 24000,
-      stock: 10,
-    ),
-    ProductModel(
-      image: Assets.images.f3.path,
-      name: 'Iced Mocha',
-      category: ProductCategoryModel.drink,
-      price: 33000,
-      stock: 10,
-    ),
-    ProductModel(
-      image: Assets.images.f4.path,
-      name: 'Hot Mocha',
-      category: ProductCategoryModel.drink,
-      price: 33000,
-      stock: 10,
-    ),
-  ];
 
   @override
   void initState() {
-    searchResults = products;
     super.initState();
-  }
-
-  void onCategoryTap(int index) {
-    searchController.clear();
-    indexValue.value = index;
-    if (index == 0) {
-      searchResults = products;
-    } else {
-      searchResults = products
-          .where((e) => e.category.index.toString().contains(index.toString()))
-          .toList();
-    }
-    setState(() {});
+    context.read<ProductBloc>().add(const ProductEvent.fetchLocal());
   }
 
   @override
   Widget build(BuildContext context) {
-    if (products.isEmpty) {
-      return const ProductEmpty();
-    }
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -92,72 +41,42 @@ class _HomePageState extends State<HomePage> {
             SearchInput(
               controller: searchController,
               onChanged: (value) {
-                indexValue.value = 0;
-                searchResults = products
-                    .where((e) =>
-                    e.name.toLowerCase().contains(value.toLowerCase()))
-                    .toList();
-                setState(() {});
+                context.read<ProductBloc>().add(ProductEvent.fetchByName(value));
               },
             ),
-            const SpaceHeight(20.0),
-            ValueListenableBuilder(
-              valueListenable: indexValue,
-              builder: (context, value, _) => Row(
-                children: [
-                  MenuButton(
-                    iconPath: Assets.icons.allCategories.path,
-                    label: 'Semua',
-                    isActive: value == 0,
-                    onPressed: () => onCategoryTap(0),
-                  ),
-                  const SpaceWidth(10.0),
-                  MenuButton(
-                    iconPath: Assets.icons.drink.path,
-                    label: 'Minuman',
-                    isActive: value == 1,
-                    onPressed: () => onCategoryTap(1),
-                  ),
-                  const SpaceWidth(10.0),
-                  MenuButton(
-                    iconPath: Assets.icons.food.path,
-                    label: 'Makanan',
-                    isActive: value == 2,
-                    onPressed: () => onCategoryTap(2),
-                  ),
-                  const SpaceWidth(10.0),
-                  MenuButton(
-                    iconPath: Assets.icons.snack.path,
-                    label: 'Snack',
-                    isActive: value == 3,
-                    onPressed: () => onCategoryTap(3),
-                  ),
-                ],
-              ),
-            ),
-            const SpaceHeight(35.0),
-            if (searchResults.isEmpty)
-              const Padding(
-                padding: EdgeInsets.only(top: 80.0),
-                child: ProductEmpty(),
-              )
-            else
-              GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: searchResults.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  childAspectRatio: 0.65,
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 30.0,
-                  mainAxisSpacing: 30.0,
-                ),
-                itemBuilder: (context, index) => ProductCard(
-                  data: searchResults[index],
-                  onCartButton: () {},
-                ),
-              ),
             const SpaceHeight(30.0),
+            BlocBuilder<ProductBloc, ProductState>(
+              builder: (context, state) {
+                return state.maybeWhen(
+                    orElse: () {
+                      return const SizedBox();
+                    },
+                    loading: () {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    },
+                    success: (products) {
+                      if (products.isEmpty) return const ProductEmpty();
+                      return GridView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: products.length,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          childAspectRatio: 0.65,
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 30.0,
+                          mainAxisSpacing: 30.0,
+                        ),
+                        itemBuilder: (context, index) => ProductCard(
+                          data: products[index],
+                          onCartButton: () {},
+                        ),
+                      );
+                    });
+              },
+            ),
           ],
         ),
       ),

@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pos_bengkel/data/datasources/auth_local_datasource.dart';
+import 'package:pos_bengkel/data/datasources/product_remote_datasource.dart';
 import 'package:pos_bengkel/presentation/auth/pages/login_page.dart';
 import 'package:pos_bengkel/presentation/home/bloc/logout/logout_bloc.dart';
+import 'package:pos_bengkel/presentation/home/bloc/product/product_bloc.dart';
 import 'package:pos_bengkel/presentation/home/pages/dashboard_page.dart';
 
 import 'core/constants/colors.dart';
@@ -27,6 +29,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => LogoutBloc(AuthRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => ProductBloc(ProductRemoteDataSource())..add(const ProductEvent.fetchLocal()),
         ),
       ],
       child: MaterialApp(
