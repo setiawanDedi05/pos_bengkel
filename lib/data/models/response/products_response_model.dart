@@ -35,6 +35,8 @@ class Product {
   final String price;
   final String stock;
   final String image;
+  final bool isBestSeller;
+  final bool isSync;
   final DateTime createdAt;
   final DateTime updatedAt;
 
@@ -45,6 +47,8 @@ class Product {
     required this.price,
     required this.stock,
     required this.image,
+    this.isBestSeller = false,
+    this.isSync = true,
     required this.createdAt,
     required this.updatedAt,
   });
@@ -57,9 +61,11 @@ class Product {
     id: json["id"],
     name: json["name"],
     description: json["description"],
-    price: json["price"],
-    stock: json["stock"],
+    price: json["price"].toString(),
+    stock: json["stock"].toString(),
     image: json["image"],
+    isBestSeller: json["is_best_seller"] == 1 ? true : false,
+    isSync: json["is_sync"] == null ? true : json["is_sync"] == 1 ? true : false,
     createdAt: DateTime.parse(json["created_at"]),
     updatedAt: DateTime.parse(json["updated_at"]),
   );
@@ -71,6 +77,8 @@ class Product {
     "price": price,
     "stock": stock,
     "image": image,
+    "is_best_seller": isBestSeller ? 1 : 0,
+    "is_sync": isSync ? 1 : 0,
     "created_at": createdAt.toIso8601String(),
     "updated_at": updatedAt.toIso8601String(),
   };

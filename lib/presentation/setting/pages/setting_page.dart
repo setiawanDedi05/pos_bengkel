@@ -2,9 +2,14 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pos_bengkel/core/assets/assets.gen.dart';
+import 'package:pos_bengkel/core/components/menu_button.dart';
+import 'package:pos_bengkel/core/components/spaces.dart';
 import 'package:pos_bengkel/core/constants/colors.dart';
+import 'package:pos_bengkel/core/extensions/build_context_ext.dart';
 import 'package:pos_bengkel/data/datasources/product_local_datasource.dart';
 import 'package:pos_bengkel/presentation/home/bloc/product/product_bloc.dart';
+import 'package:pos_bengkel/presentation/setting/pages/manage_product_page.dart';
 import '../../../data/datasources/auth_local_datasource.dart';
 import '../../auth/pages/login_page.dart';
 import '../../home/bloc/logout/logout_bloc.dart';
@@ -32,6 +37,26 @@ class _SettingPageState extends State<SettingPage> {
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 16),
         children: [
+          Row(
+            children: [
+              MenuButton(
+                iconPath: Assets.images.manageProduct.path,
+                label: 'Kelola Produk',
+                onPressed: () => context.push(const ManageProduct()),
+                isImage: true,
+                size: 72,
+              ),
+              SpaceWidth(16),
+              MenuButton(
+                iconPath: Assets.images.managePrinter.path,
+                label: 'Kelola Printer',
+                onPressed: () {},
+                isImage: true,
+                size: 72,
+              )
+            ],
+          ),
+          SpaceHeight(50),
           BlocConsumer<ProductBloc, ProductState>(
             listener: (context, state) {
               state.maybeMap(
@@ -50,20 +75,19 @@ class _SettingPageState extends State<SettingPage> {
                   });
             },
             builder: (context, state) {
-              return state.maybeWhen(
-                orElse: () {
-                  return ElevatedButton(
-                      onPressed: () {
-                        context.read<ProductBloc>().add(const ProductEvent.fetch());
-                      },
-                      child: const Text("Sync Data"));
-                },
-                loading: (){
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              );
+              return state.maybeWhen(orElse: () {
+                return ElevatedButton(
+                    onPressed: () {
+                      context
+                          .read<ProductBloc>()
+                          .add(const ProductEvent.fetch());
+                    },
+                    child: const Text("Sync Data"));
+              }, loading: () {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              });
             },
           ),
           BlocConsumer<LogoutBloc, LogoutState>(
@@ -78,6 +102,11 @@ class _SettingPageState extends State<SettingPage> {
                       backgroundColor: Colors.red,
                     ),
                   );
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginPage(),
+                      ));
                 },
                 success: (_) {
                   AuthLocalDataSource().removeAuthData();

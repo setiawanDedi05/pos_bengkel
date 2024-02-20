@@ -16,7 +16,7 @@ class ProductLocalDataSource{
 
     return await openDatabase(
       path,
-      version: 1,
+      version: 2,
       onCreate: _createDB
     );
   }
@@ -30,6 +30,8 @@ class ProductLocalDataSource{
         price INTEGER,
         stock INTEGER,
         image TEXT,
+        is_best_seller INTEGER,
+        is_sync INTEGER DEFAULT 0,
         created_at TEXT,
         updated_at TEXT
       )
@@ -59,7 +61,7 @@ class ProductLocalDataSource{
     final db = await instance.database;
     final result = await db.query(tableProduct);
 
-    return result.map((e) => Product.fromMap(e)).toList();
+    return result.map((e) => Product.fromMap(e)).toList().reversed.toList();
   }
 
 }
