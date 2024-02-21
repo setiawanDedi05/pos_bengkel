@@ -6,4 +6,5 @@ class ProductEvent with _$ProductEvent {
   const factory ProductEvent.fetch() = _Fetch;
   const factory ProductEvent.fetchByName(String name) = _FetchByName;
   const factory ProductEvent.fetchLocal() = _FetchLocal;
+  const factory ProductEvent.addProduct(Product product) = _AddProduct;
 }

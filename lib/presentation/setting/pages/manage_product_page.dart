@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_bengkel/core/components/spaces.dart';
+import 'package:pos_bengkel/core/extensions/build_context_ext.dart';
 import 'package:pos_bengkel/presentation/home/bloc/product/product_bloc.dart';
+import 'package:pos_bengkel/presentation/setting/pages/add_product_page.dart';
 import '../widget/product_list_item.dart';
 
 class ManageProduct extends StatefulWidget {
@@ -49,7 +51,7 @@ class _ManageProductState extends State<ManageProduct> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () => context.push(const AddProductPage()),
         child: const Icon(Icons.add),
       ),
     );

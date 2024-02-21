@@ -38,5 +38,16 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       products = localProducts;
       emit(ProductState.success(products));
     });
+
+    on<_AddProduct>((event, emit) async {
+      emit(const ProductState.loading());
+      final newProduct = await ProductLocalDataSource.instance.insertProduct(event.product);
+      if(newProduct != null){
+        products.add(newProduct);
+        emit(ProductState.successAddProduct(products));
+      }else{
+        emit(const ProductState.error("Nama Produk sudah ada"));
+      }
+    });
   }
 }

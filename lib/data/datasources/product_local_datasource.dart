@@ -1,8 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:sqflite/sqflite.dart';
-
 import '../models/response/products_response_model.dart';
 
-class ProductLocalDataSource{
+class ProductLocalDataSource {
   ProductLocalDataSource._init();
 
   static final ProductLocalDataSource instance = ProductLocalDataSource._init();
@@ -14,18 +14,14 @@ class ProductLocalDataSource{
     final dbPath = await getDatabasesPath();
     final path = dbPath + filePath;
 
-    return await openDatabase(
-      path,
-      version: 2,
-      onCreate: _createDB
-    );
+    return await openDatabase(path, version: 3, onCreate: _createDB);
   }
 
   Future<void> _createDB(Database db, int version) async {
     await db.execute('''
       CREATE TABLE $tableProduct (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT,
+        name TEXT UNIQUE,
         description TEXT,
         price INTEGER,
         stock INTEGER,
@@ -39,7 +35,7 @@ class ProductLocalDataSource{
   }
 
   Future<Database> get database async {
-    if(_database != null) return _database!;
+    if (_database != null) return _database!;
 
     _database = await _initDB('pdjm.db');
     return _database!;
@@ -57,11 +53,24 @@ class ProductLocalDataSource{
     }
   }
 
+  Future<Product?> insertProduct(Product product) async {
+    final db = await instance.database;
+    product.copyWith(isSync: false);
+    int? id;
+    try{
+      id = await db.insert(tableProduct, product.toMap());
+      debugPrint("$id id");
+      return product.copyWith(id: id);
+    }catch(error){
+      debugPrint("$error ini");
+      return null;
+    }
+  }
+
   Future<List<Product>> getAllProduct() async {
     final db = await instance.database;
     final result = await db.query(tableProduct);
 
     return result.map((e) => Product.fromMap(e)).toList().reversed.toList();
   }
-
 }
