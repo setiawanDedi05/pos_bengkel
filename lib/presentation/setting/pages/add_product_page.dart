@@ -1,9 +1,9 @@
-import 'dart:io';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:pos_bengkel/core/extensions/string_ext.dart';
-
 import '../../../core/components/buttons.dart';
 import '../../../core/components/custom_text_field.dart';
 import '../../../core/components/image_picker_widget.dart';
@@ -24,7 +24,7 @@ class _AddProductPageState extends State<AddProductPage> {
   TextEditingController? priceController;
   TextEditingController? stockController;
   TextEditingController? descriptionController;
-  File? imageFile;
+  XFile? imageFile;
   bool isBestSeller = false;
 
   @override
@@ -44,7 +44,6 @@ class _AddProductPageState extends State<AddProductPage> {
     descriptionController!.dispose();
     super.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -118,9 +117,10 @@ class _AddProductPageState extends State<AddProductPage> {
                   Navigator.pop(context);
                 },
                 error: (error){
+                  var message = jsonDecode(error.message);
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text(error.message),
+                      content: Text(message["message"]),
                       backgroundColor: AppColors.primary,
                     ),
                   );
@@ -151,7 +151,7 @@ class _AddProductPageState extends State<AddProductPage> {
                         image: imageFile!.path
                     );
                     // context.read<ProductBloc>().add(ProductEvent.addProduct(product, imageFile!));
-                    context.read<ProductBloc>().add(ProductEvent.addProduct(product));
+                    context.read<ProductBloc>().add(ProductEvent.addProduct(product, imageFile!));
                   },
                   label: 'Simpan',
                 );

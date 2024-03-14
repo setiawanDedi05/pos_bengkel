@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:pos_bengkel/presentation/home/pages/home_page.dart';
+import 'package:pos_bengkel/presentation/order/pages/order_page.dart';
 import 'package:pos_bengkel/presentation/setting/pages/setting_page.dart';
 import '../../../core/assets/assets.gen.dart';
 import '../../../core/constants/colors.dart';
+import '../../history/page/history_transaction_page.dart';
 import '../widget/nav_item.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -22,12 +24,8 @@ class _DashboardPageState extends State<DashboardPage> {
 
   final List<Widget> _pages = [
     const HomePage(),
-    const Center(
-      child: Text("Order"),
-    ),
-    const Center(
-      child: Text("History"),
-    ),
+    const OrderPage(),
+    const HistoryTransactionPage(),
     const SettingPage()
   ];
 

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:pos_bengkel/core/constants/colors.dart';
+import 'package:pos_bengkel/core/extensions/int_ext.dart';
 import '../../../core/components/buttons.dart';
 import '../../../core/components/spaces.dart';
 import '../../../core/constants/variables.dart';
@@ -22,22 +23,25 @@ class ProductItem extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
-        childrenPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        childrenPadding:
+            const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         tilePadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text(data.name, style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold
-            ),),
-            Text("Harga : ${data.price}", style: const TextStyle(
-              fontSize: 12
-            ),),
-            Text("Stok : ${data.stock}", style: const TextStyle(
-              fontSize: 12
-            ),),
+            Text(
+              data.name,
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            Text(
+              "Harga : ${int.tryParse(data.price)?.currencyFormatRp}",
+              style: const TextStyle(fontSize: 12),
+            ),
+            Text(
+              "Stok : ${data.stock}",
+              style: const TextStyle(fontSize: 12),
+            ),
           ],
         ),
         leading: ClipRRect(
@@ -55,7 +59,20 @@ class ProductItem extends StatelessWidget {
         ),
         children: [
           Button.outlined(
-            onPressed: () {},
+            onPressed: () {
+              showModalBottomSheet(
+                  context: context,
+                  builder: (context){
+                    return Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                      height: MediaQuery.of(context).size.height,
+                      width: double.infinity,
+                      child: Text(
+                        data.name
+                      ),
+                    );
+                  });
+            },
             label: 'Detail',
             fontSize: 8.0,
             height: 31,

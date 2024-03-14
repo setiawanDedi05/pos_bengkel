@@ -22,7 +22,8 @@ mixin _$ProductEvent {
     required TResult Function() fetch,
     required TResult Function(String name) fetchByName,
     required TResult Function() fetchLocal,
-    required TResult Function(Product product) addProduct,
+    required TResult Function(Product product) addProductLocal,
+    required TResult Function(Product product, XFile image) addProduct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,7 +32,8 @@ mixin _$ProductEvent {
     TResult? Function()? fetch,
     TResult? Function(String name)? fetchByName,
     TResult? Function()? fetchLocal,
-    TResult? Function(Product product)? addProduct,
+    TResult? Function(Product product)? addProductLocal,
+    TResult? Function(Product product, XFile image)? addProduct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,7 +42,8 @@ mixin _$ProductEvent {
     TResult Function()? fetch,
     TResult Function(String name)? fetchByName,
     TResult Function()? fetchLocal,
-    TResult Function(Product product)? addProduct,
+    TResult Function(Product product)? addProductLocal,
+    TResult Function(Product product, XFile image)? addProduct,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -50,6 +53,7 @@ mixin _$ProductEvent {
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_FetchByName value) fetchByName,
     required TResult Function(_FetchLocal value) fetchLocal,
+    required TResult Function(_AddProductLocal value) addProductLocal,
     required TResult Function(_AddProduct value) addProduct,
   }) =>
       throw _privateConstructorUsedError;
@@ -59,6 +63,7 @@ mixin _$ProductEvent {
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_FetchByName value)? fetchByName,
     TResult? Function(_FetchLocal value)? fetchLocal,
+    TResult? Function(_AddProductLocal value)? addProductLocal,
     TResult? Function(_AddProduct value)? addProduct,
   }) =>
       throw _privateConstructorUsedError;
@@ -68,6 +73,7 @@ mixin _$ProductEvent {
     TResult Function(_Fetch value)? fetch,
     TResult Function(_FetchByName value)? fetchByName,
     TResult Function(_FetchLocal value)? fetchLocal,
+    TResult Function(_AddProductLocal value)? addProductLocal,
     TResult Function(_AddProduct value)? addProduct,
     required TResult orElse(),
   }) =>
@@ -134,7 +140,8 @@ class _$StartedImpl implements _Started {
     required TResult Function() fetch,
     required TResult Function(String name) fetchByName,
     required TResult Function() fetchLocal,
-    required TResult Function(Product product) addProduct,
+    required TResult Function(Product product) addProductLocal,
+    required TResult Function(Product product, XFile image) addProduct,
   }) {
     return started();
   }
@@ -146,7 +153,8 @@ class _$StartedImpl implements _Started {
     TResult? Function()? fetch,
     TResult? Function(String name)? fetchByName,
     TResult? Function()? fetchLocal,
-    TResult? Function(Product product)? addProduct,
+    TResult? Function(Product product)? addProductLocal,
+    TResult? Function(Product product, XFile image)? addProduct,
   }) {
     return started?.call();
   }
@@ -158,7 +166,8 @@ class _$StartedImpl implements _Started {
     TResult Function()? fetch,
     TResult Function(String name)? fetchByName,
     TResult Function()? fetchLocal,
-    TResult Function(Product product)? addProduct,
+    TResult Function(Product product)? addProductLocal,
+    TResult Function(Product product, XFile image)? addProduct,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -174,6 +183,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_FetchByName value) fetchByName,
     required TResult Function(_FetchLocal value) fetchLocal,
+    required TResult Function(_AddProductLocal value) addProductLocal,
     required TResult Function(_AddProduct value) addProduct,
   }) {
     return started(this);
@@ -186,6 +196,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_FetchByName value)? fetchByName,
     TResult? Function(_FetchLocal value)? fetchLocal,
+    TResult? Function(_AddProductLocal value)? addProductLocal,
     TResult? Function(_AddProduct value)? addProduct,
   }) {
     return started?.call(this);
@@ -198,6 +209,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_Fetch value)? fetch,
     TResult Function(_FetchByName value)? fetchByName,
     TResult Function(_FetchLocal value)? fetchLocal,
+    TResult Function(_AddProductLocal value)? addProductLocal,
     TResult Function(_AddProduct value)? addProduct,
     required TResult orElse(),
   }) {
@@ -254,7 +266,8 @@ class _$FetchImpl implements _Fetch {
     required TResult Function() fetch,
     required TResult Function(String name) fetchByName,
     required TResult Function() fetchLocal,
-    required TResult Function(Product product) addProduct,
+    required TResult Function(Product product) addProductLocal,
+    required TResult Function(Product product, XFile image) addProduct,
   }) {
     return fetch();
   }
@@ -266,7 +279,8 @@ class _$FetchImpl implements _Fetch {
     TResult? Function()? fetch,
     TResult? Function(String name)? fetchByName,
     TResult? Function()? fetchLocal,
-    TResult? Function(Product product)? addProduct,
+    TResult? Function(Product product)? addProductLocal,
+    TResult? Function(Product product, XFile image)? addProduct,
   }) {
     return fetch?.call();
   }
@@ -278,7 +292,8 @@ class _$FetchImpl implements _Fetch {
     TResult Function()? fetch,
     TResult Function(String name)? fetchByName,
     TResult Function()? fetchLocal,
-    TResult Function(Product product)? addProduct,
+    TResult Function(Product product)? addProductLocal,
+    TResult Function(Product product, XFile image)? addProduct,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -294,6 +309,7 @@ class _$FetchImpl implements _Fetch {
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_FetchByName value) fetchByName,
     required TResult Function(_FetchLocal value) fetchLocal,
+    required TResult Function(_AddProductLocal value) addProductLocal,
     required TResult Function(_AddProduct value) addProduct,
   }) {
     return fetch(this);
@@ -306,6 +322,7 @@ class _$FetchImpl implements _Fetch {
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_FetchByName value)? fetchByName,
     TResult? Function(_FetchLocal value)? fetchLocal,
+    TResult? Function(_AddProductLocal value)? addProductLocal,
     TResult? Function(_AddProduct value)? addProduct,
   }) {
     return fetch?.call(this);
@@ -318,6 +335,7 @@ class _$FetchImpl implements _Fetch {
     TResult Function(_Fetch value)? fetch,
     TResult Function(_FetchByName value)? fetchByName,
     TResult Function(_FetchLocal value)? fetchLocal,
+    TResult Function(_AddProductLocal value)? addProductLocal,
     TResult Function(_AddProduct value)? addProduct,
     required TResult orElse(),
   }) {
@@ -400,7 +418,8 @@ class _$FetchByNameImpl implements _FetchByName {
     required TResult Function() fetch,
     required TResult Function(String name) fetchByName,
     required TResult Function() fetchLocal,
-    required TResult Function(Product product) addProduct,
+    required TResult Function(Product product) addProductLocal,
+    required TResult Function(Product product, XFile image) addProduct,
   }) {
     return fetchByName(name);
   }
@@ -412,7 +431,8 @@ class _$FetchByNameImpl implements _FetchByName {
     TResult? Function()? fetch,
     TResult? Function(String name)? fetchByName,
     TResult? Function()? fetchLocal,
-    TResult? Function(Product product)? addProduct,
+    TResult? Function(Product product)? addProductLocal,
+    TResult? Function(Product product, XFile image)? addProduct,
   }) {
     return fetchByName?.call(name);
   }
@@ -424,7 +444,8 @@ class _$FetchByNameImpl implements _FetchByName {
     TResult Function()? fetch,
     TResult Function(String name)? fetchByName,
     TResult Function()? fetchLocal,
-    TResult Function(Product product)? addProduct,
+    TResult Function(Product product)? addProductLocal,
+    TResult Function(Product product, XFile image)? addProduct,
     required TResult orElse(),
   }) {
     if (fetchByName != null) {
@@ -440,6 +461,7 @@ class _$FetchByNameImpl implements _FetchByName {
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_FetchByName value) fetchByName,
     required TResult Function(_FetchLocal value) fetchLocal,
+    required TResult Function(_AddProductLocal value) addProductLocal,
     required TResult Function(_AddProduct value) addProduct,
   }) {
     return fetchByName(this);
@@ -452,6 +474,7 @@ class _$FetchByNameImpl implements _FetchByName {
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_FetchByName value)? fetchByName,
     TResult? Function(_FetchLocal value)? fetchLocal,
+    TResult? Function(_AddProductLocal value)? addProductLocal,
     TResult? Function(_AddProduct value)? addProduct,
   }) {
     return fetchByName?.call(this);
@@ -464,6 +487,7 @@ class _$FetchByNameImpl implements _FetchByName {
     TResult Function(_Fetch value)? fetch,
     TResult Function(_FetchByName value)? fetchByName,
     TResult Function(_FetchLocal value)? fetchLocal,
+    TResult Function(_AddProductLocal value)? addProductLocal,
     TResult Function(_AddProduct value)? addProduct,
     required TResult orElse(),
   }) {
@@ -525,7 +549,8 @@ class _$FetchLocalImpl implements _FetchLocal {
     required TResult Function() fetch,
     required TResult Function(String name) fetchByName,
     required TResult Function() fetchLocal,
-    required TResult Function(Product product) addProduct,
+    required TResult Function(Product product) addProductLocal,
+    required TResult Function(Product product, XFile image) addProduct,
   }) {
     return fetchLocal();
   }
@@ -537,7 +562,8 @@ class _$FetchLocalImpl implements _FetchLocal {
     TResult? Function()? fetch,
     TResult? Function(String name)? fetchByName,
     TResult? Function()? fetchLocal,
-    TResult? Function(Product product)? addProduct,
+    TResult? Function(Product product)? addProductLocal,
+    TResult? Function(Product product, XFile image)? addProduct,
   }) {
     return fetchLocal?.call();
   }
@@ -549,7 +575,8 @@ class _$FetchLocalImpl implements _FetchLocal {
     TResult Function()? fetch,
     TResult Function(String name)? fetchByName,
     TResult Function()? fetchLocal,
-    TResult Function(Product product)? addProduct,
+    TResult Function(Product product)? addProductLocal,
+    TResult Function(Product product, XFile image)? addProduct,
     required TResult orElse(),
   }) {
     if (fetchLocal != null) {
@@ -565,6 +592,7 @@ class _$FetchLocalImpl implements _FetchLocal {
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_FetchByName value) fetchByName,
     required TResult Function(_FetchLocal value) fetchLocal,
+    required TResult Function(_AddProductLocal value) addProductLocal,
     required TResult Function(_AddProduct value) addProduct,
   }) {
     return fetchLocal(this);
@@ -577,6 +605,7 @@ class _$FetchLocalImpl implements _FetchLocal {
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_FetchByName value)? fetchByName,
     TResult? Function(_FetchLocal value)? fetchLocal,
+    TResult? Function(_AddProductLocal value)? addProductLocal,
     TResult? Function(_AddProduct value)? addProduct,
   }) {
     return fetchLocal?.call(this);
@@ -589,6 +618,7 @@ class _$FetchLocalImpl implements _FetchLocal {
     TResult Function(_Fetch value)? fetch,
     TResult Function(_FetchByName value)? fetchByName,
     TResult Function(_FetchLocal value)? fetchLocal,
+    TResult Function(_AddProductLocal value)? addProductLocal,
     TResult Function(_AddProduct value)? addProduct,
     required TResult orElse(),
   }) {
@@ -604,12 +634,170 @@ abstract class _FetchLocal implements ProductEvent {
 }
 
 /// @nodoc
+abstract class _$$AddProductLocalImplCopyWith<$Res> {
+  factory _$$AddProductLocalImplCopyWith(_$AddProductLocalImpl value,
+          $Res Function(_$AddProductLocalImpl) then) =
+      __$$AddProductLocalImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Product product});
+}
+
+/// @nodoc
+class __$$AddProductLocalImplCopyWithImpl<$Res>
+    extends _$ProductEventCopyWithImpl<$Res, _$AddProductLocalImpl>
+    implements _$$AddProductLocalImplCopyWith<$Res> {
+  __$$AddProductLocalImplCopyWithImpl(
+      _$AddProductLocalImpl _value, $Res Function(_$AddProductLocalImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? product = null,
+  }) {
+    return _then(_$AddProductLocalImpl(
+      null == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as Product,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddProductLocalImpl implements _AddProductLocal {
+  const _$AddProductLocalImpl(this.product);
+
+  @override
+  final Product product;
+
+  @override
+  String toString() {
+    return 'ProductEvent.addProductLocal(product: $product)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddProductLocalImpl &&
+            (identical(other.product, product) || other.product == product));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, product);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddProductLocalImplCopyWith<_$AddProductLocalImpl> get copyWith =>
+      __$$AddProductLocalImplCopyWithImpl<_$AddProductLocalImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() fetch,
+    required TResult Function(String name) fetchByName,
+    required TResult Function() fetchLocal,
+    required TResult Function(Product product) addProductLocal,
+    required TResult Function(Product product, XFile image) addProduct,
+  }) {
+    return addProductLocal(product);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? fetch,
+    TResult? Function(String name)? fetchByName,
+    TResult? Function()? fetchLocal,
+    TResult? Function(Product product)? addProductLocal,
+    TResult? Function(Product product, XFile image)? addProduct,
+  }) {
+    return addProductLocal?.call(product);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? fetch,
+    TResult Function(String name)? fetchByName,
+    TResult Function()? fetchLocal,
+    TResult Function(Product product)? addProductLocal,
+    TResult Function(Product product, XFile image)? addProduct,
+    required TResult orElse(),
+  }) {
+    if (addProductLocal != null) {
+      return addProductLocal(product);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_FetchByName value) fetchByName,
+    required TResult Function(_FetchLocal value) fetchLocal,
+    required TResult Function(_AddProductLocal value) addProductLocal,
+    required TResult Function(_AddProduct value) addProduct,
+  }) {
+    return addProductLocal(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_FetchByName value)? fetchByName,
+    TResult? Function(_FetchLocal value)? fetchLocal,
+    TResult? Function(_AddProductLocal value)? addProductLocal,
+    TResult? Function(_AddProduct value)? addProduct,
+  }) {
+    return addProductLocal?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_FetchByName value)? fetchByName,
+    TResult Function(_FetchLocal value)? fetchLocal,
+    TResult Function(_AddProductLocal value)? addProductLocal,
+    TResult Function(_AddProduct value)? addProduct,
+    required TResult orElse(),
+  }) {
+    if (addProductLocal != null) {
+      return addProductLocal(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddProductLocal implements ProductEvent {
+  const factory _AddProductLocal(final Product product) = _$AddProductLocalImpl;
+
+  Product get product;
+  @JsonKey(ignore: true)
+  _$$AddProductLocalImplCopyWith<_$AddProductLocalImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 abstract class _$$AddProductImplCopyWith<$Res> {
   factory _$$AddProductImplCopyWith(
           _$AddProductImpl value, $Res Function(_$AddProductImpl) then) =
       __$$AddProductImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Product product});
+  $Res call({Product product, XFile image});
 }
 
 /// @nodoc
@@ -624,12 +812,17 @@ class __$$AddProductImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? product = null,
+    Object? image = null,
   }) {
     return _then(_$AddProductImpl(
       null == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as Product,
+      null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as XFile,
     ));
   }
 }
@@ -637,14 +830,16 @@ class __$$AddProductImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AddProductImpl implements _AddProduct {
-  const _$AddProductImpl(this.product);
+  const _$AddProductImpl(this.product, this.image);
 
   @override
   final Product product;
+  @override
+  final XFile image;
 
   @override
   String toString() {
-    return 'ProductEvent.addProduct(product: $product)';
+    return 'ProductEvent.addProduct(product: $product, image: $image)';
   }
 
   @override
@@ -652,11 +847,12 @@ class _$AddProductImpl implements _AddProduct {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddProductImpl &&
-            (identical(other.product, product) || other.product == product));
+            (identical(other.product, product) || other.product == product) &&
+            (identical(other.image, image) || other.image == image));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, product);
+  int get hashCode => Object.hash(runtimeType, product, image);
 
   @JsonKey(ignore: true)
   @override
@@ -671,9 +867,10 @@ class _$AddProductImpl implements _AddProduct {
     required TResult Function() fetch,
     required TResult Function(String name) fetchByName,
     required TResult Function() fetchLocal,
-    required TResult Function(Product product) addProduct,
+    required TResult Function(Product product) addProductLocal,
+    required TResult Function(Product product, XFile image) addProduct,
   }) {
-    return addProduct(product);
+    return addProduct(product, image);
   }
 
   @override
@@ -683,9 +880,10 @@ class _$AddProductImpl implements _AddProduct {
     TResult? Function()? fetch,
     TResult? Function(String name)? fetchByName,
     TResult? Function()? fetchLocal,
-    TResult? Function(Product product)? addProduct,
+    TResult? Function(Product product)? addProductLocal,
+    TResult? Function(Product product, XFile image)? addProduct,
   }) {
-    return addProduct?.call(product);
+    return addProduct?.call(product, image);
   }
 
   @override
@@ -695,11 +893,12 @@ class _$AddProductImpl implements _AddProduct {
     TResult Function()? fetch,
     TResult Function(String name)? fetchByName,
     TResult Function()? fetchLocal,
-    TResult Function(Product product)? addProduct,
+    TResult Function(Product product)? addProductLocal,
+    TResult Function(Product product, XFile image)? addProduct,
     required TResult orElse(),
   }) {
     if (addProduct != null) {
-      return addProduct(product);
+      return addProduct(product, image);
     }
     return orElse();
   }
@@ -711,6 +910,7 @@ class _$AddProductImpl implements _AddProduct {
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_FetchByName value) fetchByName,
     required TResult Function(_FetchLocal value) fetchLocal,
+    required TResult Function(_AddProductLocal value) addProductLocal,
     required TResult Function(_AddProduct value) addProduct,
   }) {
     return addProduct(this);
@@ -723,6 +923,7 @@ class _$AddProductImpl implements _AddProduct {
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_FetchByName value)? fetchByName,
     TResult? Function(_FetchLocal value)? fetchLocal,
+    TResult? Function(_AddProductLocal value)? addProductLocal,
     TResult? Function(_AddProduct value)? addProduct,
   }) {
     return addProduct?.call(this);
@@ -735,6 +936,7 @@ class _$AddProductImpl implements _AddProduct {
     TResult Function(_Fetch value)? fetch,
     TResult Function(_FetchByName value)? fetchByName,
     TResult Function(_FetchLocal value)? fetchLocal,
+    TResult Function(_AddProductLocal value)? addProductLocal,
     TResult Function(_AddProduct value)? addProduct,
     required TResult orElse(),
   }) {
@@ -746,9 +948,11 @@ class _$AddProductImpl implements _AddProduct {
 }
 
 abstract class _AddProduct implements ProductEvent {
-  const factory _AddProduct(final Product product) = _$AddProductImpl;
+  const factory _AddProduct(final Product product, final XFile image) =
+      _$AddProductImpl;
 
   Product get product;
+  XFile get image;
   @JsonKey(ignore: true)
   _$$AddProductImplCopyWith<_$AddProductImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -761,7 +965,7 @@ mixin _$ProductState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<Product> contentResponse) success,
-    required TResult Function(List<Product> response) successAddProduct,
+    required TResult Function(List<Product> response) successAddProductLocal,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -770,7 +974,7 @@ mixin _$ProductState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<Product> contentResponse)? success,
-    TResult? Function(List<Product> response)? successAddProduct,
+    TResult? Function(List<Product> response)? successAddProductLocal,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -779,7 +983,7 @@ mixin _$ProductState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<Product> contentResponse)? success,
-    TResult Function(List<Product> response)? successAddProduct,
+    TResult Function(List<Product> response)? successAddProductLocal,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -789,7 +993,8 @@ mixin _$ProductState {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
-    required TResult Function(_SuccessAddProduct value) successAddProduct,
+    required TResult Function(_SuccessAddProductLocal value)
+        successAddProductLocal,
     required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -798,7 +1003,7 @@ mixin _$ProductState {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
-    TResult? Function(_SuccessAddProduct value)? successAddProduct,
+    TResult? Function(_SuccessAddProductLocal value)? successAddProductLocal,
     TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -807,7 +1012,7 @@ mixin _$ProductState {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
-    TResult Function(_SuccessAddProduct value)? successAddProduct,
+    TResult Function(_SuccessAddProductLocal value)? successAddProductLocal,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
@@ -873,7 +1078,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<Product> contentResponse) success,
-    required TResult Function(List<Product> response) successAddProduct,
+    required TResult Function(List<Product> response) successAddProductLocal,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -885,7 +1090,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<Product> contentResponse)? success,
-    TResult? Function(List<Product> response)? successAddProduct,
+    TResult? Function(List<Product> response)? successAddProductLocal,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -897,7 +1102,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<Product> contentResponse)? success,
-    TResult Function(List<Product> response)? successAddProduct,
+    TResult Function(List<Product> response)? successAddProductLocal,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -913,7 +1118,8 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
-    required TResult Function(_SuccessAddProduct value) successAddProduct,
+    required TResult Function(_SuccessAddProductLocal value)
+        successAddProductLocal,
     required TResult Function(_Error value) error,
   }) {
     return initial(this);
@@ -925,7 +1131,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
-    TResult? Function(_SuccessAddProduct value)? successAddProduct,
+    TResult? Function(_SuccessAddProductLocal value)? successAddProductLocal,
     TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
@@ -937,7 +1143,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
-    TResult Function(_SuccessAddProduct value)? successAddProduct,
+    TResult Function(_SuccessAddProductLocal value)? successAddProductLocal,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -993,7 +1199,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<Product> contentResponse) success,
-    required TResult Function(List<Product> response) successAddProduct,
+    required TResult Function(List<Product> response) successAddProductLocal,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -1005,7 +1211,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<Product> contentResponse)? success,
-    TResult? Function(List<Product> response)? successAddProduct,
+    TResult? Function(List<Product> response)? successAddProductLocal,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -1017,7 +1223,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<Product> contentResponse)? success,
-    TResult Function(List<Product> response)? successAddProduct,
+    TResult Function(List<Product> response)? successAddProductLocal,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -1033,7 +1239,8 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
-    required TResult Function(_SuccessAddProduct value) successAddProduct,
+    required TResult Function(_SuccessAddProductLocal value)
+        successAddProductLocal,
     required TResult Function(_Error value) error,
   }) {
     return loading(this);
@@ -1045,7 +1252,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
-    TResult? Function(_SuccessAddProduct value)? successAddProduct,
+    TResult? Function(_SuccessAddProductLocal value)? successAddProductLocal,
     TResult? Function(_Error value)? error,
   }) {
     return loading?.call(this);
@@ -1057,7 +1264,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
-    TResult Function(_SuccessAddProduct value)? successAddProduct,
+    TResult Function(_SuccessAddProductLocal value)? successAddProductLocal,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -1147,7 +1354,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<Product> contentResponse) success,
-    required TResult Function(List<Product> response) successAddProduct,
+    required TResult Function(List<Product> response) successAddProductLocal,
     required TResult Function(String message) error,
   }) {
     return success(contentResponse);
@@ -1159,7 +1366,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<Product> contentResponse)? success,
-    TResult? Function(List<Product> response)? successAddProduct,
+    TResult? Function(List<Product> response)? successAddProductLocal,
     TResult? Function(String message)? error,
   }) {
     return success?.call(contentResponse);
@@ -1171,7 +1378,7 @@ class _$SuccessImpl implements _Success {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<Product> contentResponse)? success,
-    TResult Function(List<Product> response)? successAddProduct,
+    TResult Function(List<Product> response)? successAddProductLocal,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -1187,7 +1394,8 @@ class _$SuccessImpl implements _Success {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
-    required TResult Function(_SuccessAddProduct value) successAddProduct,
+    required TResult Function(_SuccessAddProductLocal value)
+        successAddProductLocal,
     required TResult Function(_Error value) error,
   }) {
     return success(this);
@@ -1199,7 +1407,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
-    TResult? Function(_SuccessAddProduct value)? successAddProduct,
+    TResult? Function(_SuccessAddProductLocal value)? successAddProductLocal,
     TResult? Function(_Error value)? error,
   }) {
     return success?.call(this);
@@ -1211,7 +1419,7 @@ class _$SuccessImpl implements _Success {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
-    TResult Function(_SuccessAddProduct value)? successAddProduct,
+    TResult Function(_SuccessAddProductLocal value)? successAddProductLocal,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -1232,20 +1440,22 @@ abstract class _Success implements ProductState {
 }
 
 /// @nodoc
-abstract class _$$SuccessAddProductImplCopyWith<$Res> {
-  factory _$$SuccessAddProductImplCopyWith(_$SuccessAddProductImpl value,
-          $Res Function(_$SuccessAddProductImpl) then) =
-      __$$SuccessAddProductImplCopyWithImpl<$Res>;
+abstract class _$$SuccessAddProductLocalImplCopyWith<$Res> {
+  factory _$$SuccessAddProductLocalImplCopyWith(
+          _$SuccessAddProductLocalImpl value,
+          $Res Function(_$SuccessAddProductLocalImpl) then) =
+      __$$SuccessAddProductLocalImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Product> response});
 }
 
 /// @nodoc
-class __$$SuccessAddProductImplCopyWithImpl<$Res>
-    extends _$ProductStateCopyWithImpl<$Res, _$SuccessAddProductImpl>
-    implements _$$SuccessAddProductImplCopyWith<$Res> {
-  __$$SuccessAddProductImplCopyWithImpl(_$SuccessAddProductImpl _value,
-      $Res Function(_$SuccessAddProductImpl) _then)
+class __$$SuccessAddProductLocalImplCopyWithImpl<$Res>
+    extends _$ProductStateCopyWithImpl<$Res, _$SuccessAddProductLocalImpl>
+    implements _$$SuccessAddProductLocalImplCopyWith<$Res> {
+  __$$SuccessAddProductLocalImplCopyWithImpl(
+      _$SuccessAddProductLocalImpl _value,
+      $Res Function(_$SuccessAddProductLocalImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1253,7 +1463,7 @@ class __$$SuccessAddProductImplCopyWithImpl<$Res>
   $Res call({
     Object? response = null,
   }) {
-    return _then(_$SuccessAddProductImpl(
+    return _then(_$SuccessAddProductLocalImpl(
       null == response
           ? _value._response
           : response // ignore: cast_nullable_to_non_nullable
@@ -1264,8 +1474,8 @@ class __$$SuccessAddProductImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SuccessAddProductImpl implements _SuccessAddProduct {
-  const _$SuccessAddProductImpl(final List<Product> response)
+class _$SuccessAddProductLocalImpl implements _SuccessAddProductLocal {
+  const _$SuccessAddProductLocalImpl(final List<Product> response)
       : _response = response;
 
   final List<Product> _response;
@@ -1278,14 +1488,14 @@ class _$SuccessAddProductImpl implements _SuccessAddProduct {
 
   @override
   String toString() {
-    return 'ProductState.successAddProduct(response: $response)';
+    return 'ProductState.successAddProductLocal(response: $response)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SuccessAddProductImpl &&
+            other is _$SuccessAddProductLocalImpl &&
             const DeepCollectionEquality().equals(other._response, _response));
   }
 
@@ -1296,9 +1506,9 @@ class _$SuccessAddProductImpl implements _SuccessAddProduct {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SuccessAddProductImplCopyWith<_$SuccessAddProductImpl> get copyWith =>
-      __$$SuccessAddProductImplCopyWithImpl<_$SuccessAddProductImpl>(
-          this, _$identity);
+  _$$SuccessAddProductLocalImplCopyWith<_$SuccessAddProductLocalImpl>
+      get copyWith => __$$SuccessAddProductLocalImplCopyWithImpl<
+          _$SuccessAddProductLocalImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1306,10 +1516,10 @@ class _$SuccessAddProductImpl implements _SuccessAddProduct {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<Product> contentResponse) success,
-    required TResult Function(List<Product> response) successAddProduct,
+    required TResult Function(List<Product> response) successAddProductLocal,
     required TResult Function(String message) error,
   }) {
-    return successAddProduct(response);
+    return successAddProductLocal(response);
   }
 
   @override
@@ -1318,10 +1528,10 @@ class _$SuccessAddProductImpl implements _SuccessAddProduct {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<Product> contentResponse)? success,
-    TResult? Function(List<Product> response)? successAddProduct,
+    TResult? Function(List<Product> response)? successAddProductLocal,
     TResult? Function(String message)? error,
   }) {
-    return successAddProduct?.call(response);
+    return successAddProductLocal?.call(response);
   }
 
   @override
@@ -1330,12 +1540,12 @@ class _$SuccessAddProductImpl implements _SuccessAddProduct {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<Product> contentResponse)? success,
-    TResult Function(List<Product> response)? successAddProduct,
+    TResult Function(List<Product> response)? successAddProductLocal,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
-    if (successAddProduct != null) {
-      return successAddProduct(response);
+    if (successAddProductLocal != null) {
+      return successAddProductLocal(response);
     }
     return orElse();
   }
@@ -1346,10 +1556,11 @@ class _$SuccessAddProductImpl implements _SuccessAddProduct {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
-    required TResult Function(_SuccessAddProduct value) successAddProduct,
+    required TResult Function(_SuccessAddProductLocal value)
+        successAddProductLocal,
     required TResult Function(_Error value) error,
   }) {
-    return successAddProduct(this);
+    return successAddProductLocal(this);
   }
 
   @override
@@ -1358,10 +1569,10 @@ class _$SuccessAddProductImpl implements _SuccessAddProduct {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
-    TResult? Function(_SuccessAddProduct value)? successAddProduct,
+    TResult? Function(_SuccessAddProductLocal value)? successAddProductLocal,
     TResult? Function(_Error value)? error,
   }) {
-    return successAddProduct?.call(this);
+    return successAddProductLocal?.call(this);
   }
 
   @override
@@ -1370,25 +1581,25 @@ class _$SuccessAddProductImpl implements _SuccessAddProduct {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
-    TResult Function(_SuccessAddProduct value)? successAddProduct,
+    TResult Function(_SuccessAddProductLocal value)? successAddProductLocal,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
-    if (successAddProduct != null) {
-      return successAddProduct(this);
+    if (successAddProductLocal != null) {
+      return successAddProductLocal(this);
     }
     return orElse();
   }
 }
 
-abstract class _SuccessAddProduct implements ProductState {
-  const factory _SuccessAddProduct(final List<Product> response) =
-      _$SuccessAddProductImpl;
+abstract class _SuccessAddProductLocal implements ProductState {
+  const factory _SuccessAddProductLocal(final List<Product> response) =
+      _$SuccessAddProductLocalImpl;
 
   List<Product> get response;
   @JsonKey(ignore: true)
-  _$$SuccessAddProductImplCopyWith<_$SuccessAddProductImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SuccessAddProductLocalImplCopyWith<_$SuccessAddProductLocalImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1458,7 +1669,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<Product> contentResponse) success,
-    required TResult Function(List<Product> response) successAddProduct,
+    required TResult Function(List<Product> response) successAddProductLocal,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -1470,7 +1681,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<Product> contentResponse)? success,
-    TResult? Function(List<Product> response)? successAddProduct,
+    TResult? Function(List<Product> response)? successAddProductLocal,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -1482,7 +1693,7 @@ class _$ErrorImpl implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<Product> contentResponse)? success,
-    TResult Function(List<Product> response)? successAddProduct,
+    TResult Function(List<Product> response)? successAddProductLocal,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -1498,7 +1709,8 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
-    required TResult Function(_SuccessAddProduct value) successAddProduct,
+    required TResult Function(_SuccessAddProductLocal value)
+        successAddProductLocal,
     required TResult Function(_Error value) error,
   }) {
     return error(this);
@@ -1510,7 +1722,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
-    TResult? Function(_SuccessAddProduct value)? successAddProduct,
+    TResult? Function(_SuccessAddProductLocal value)? successAddProductLocal,
     TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
@@ -1522,7 +1734,7 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
-    TResult Function(_SuccessAddProduct value)? successAddProduct,
+    TResult Function(_SuccessAddProductLocal value)? successAddProductLocal,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {

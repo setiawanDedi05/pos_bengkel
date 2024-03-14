@@ -11,21 +11,23 @@ class ProductsResponseModel {
     required this.data,
   });
 
-  factory ProductsResponseModel.fromJson(String str) => ProductsResponseModel.fromMap(json.decode(str));
+  factory ProductsResponseModel.fromJson(String str) =>
+      ProductsResponseModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory ProductsResponseModel.fromMap(Map<String, dynamic> json) => ProductsResponseModel(
-    success: json["success"],
-    message: json["message"],
-    data: List<Product>.from(json["data"].map((x) => Product.fromMap(x))),
-  );
+  factory ProductsResponseModel.fromMap(Map<String, dynamic> json) =>
+      ProductsResponseModel(
+        success: json["success"],
+        message: json["message"],
+        data: List<Product>.from(json["data"].map((x) => Product.fromMap(x))),
+      );
 
   Map<String, dynamic> toMap() => {
-    "success": success,
-    "message": message,
-    "data": List<dynamic>.from(data.map((x) => x.toMap())),
-  };
+        "success": success,
+        "message": message,
+        "data": List<dynamic>.from(data.map((x) => x.toMap())),
+      };
 }
 
 class Product {
@@ -33,12 +35,38 @@ class Product {
   final String name;
   final String? description;
   final String price;
-  final String stock;
+  String stock;
   final String image;
   final bool isBestSeller;
-  final bool isSync;
   final DateTime? createdAt;
   final DateTime? updatedAt;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Product &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          name == other.name &&
+          description == other.description &&
+          price == other.price &&
+          stock == other.stock &&
+          image == other.image &&
+          isBestSeller == other.isBestSeller &&
+          createdAt == other.createdAt &&
+          updatedAt == other.updatedAt;
+
+  @override
+  int get hashCode =>
+      id.hashCode ^
+      name.hashCode ^
+      description.hashCode ^
+      price.hashCode ^
+      stock.hashCode ^
+      image.hashCode ^
+      isBestSeller.hashCode ^
+      createdAt.hashCode ^
+      updatedAt.hashCode;
 
   Product({
     this.id,
@@ -48,7 +76,6 @@ class Product {
     required this.stock,
     required this.image,
     this.isBestSeller = false,
-    this.isSync = true,
     this.createdAt,
     this.updatedAt,
   });
@@ -60,7 +87,6 @@ class Product {
     String? price,
     String? stock,
     String? image,
-    bool? isSync,
     bool? isBestSeller,
     DateTime? createdAt,
     DateTime? updatedAt,
@@ -72,7 +98,6 @@ class Product {
         price: price ?? this.price,
         stock: stock ?? this.stock,
         image: image ?? this.image,
-        isSync: isSync ?? this.isSync,
         isBestSeller: isBestSeller ?? this.isBestSeller,
         createdAt: createdAt ?? this.createdAt,
         updatedAt: updatedAt ?? this.updatedAt,
@@ -83,28 +108,26 @@ class Product {
   String toJson() => json.encode(toMap());
 
   factory Product.fromMap(Map<String, dynamic> json) => Product(
-    id: json["id"] ?? "",
-    name: json["name"],
-    description: json["description"] ?? "",
-    price: json["price"].toString(),
-    stock: json["stock"].toString(),
-    image: json["image"],
-    isBestSeller: json["is_best_seller"] == 1 ? true : false,
-    isSync: json["is_sync"] == null ? true : json["is_sync"] == 1 ? true : false,
-    createdAt: DateTime.tryParse(json["created_at"]),
-    updatedAt: DateTime.tryParse(json["updated_at"]),
-  );
+        id: json["id"] ?? "",
+        name: json["name"],
+        description: json["description"] ?? "",
+        price: json["price"].toString(),
+        stock: json["stock"].toString(),
+        image: json["image"],
+        isBestSeller: json["is_best_seller"] == 1 ? true : false,
+        createdAt: DateTime.tryParse(json["created_at"]),
+        updatedAt: DateTime.tryParse(json["updated_at"]),
+      );
 
   Map<String, dynamic> toMap() => {
-    "id": id,
-    "name": name,
-    "description": description ?? "",
-    "price": price,
-    "stock": stock,
-    "image": image,
-    "is_best_seller": isBestSeller ? 1 : 0,
-    "is_sync": isSync ? 1 : 0,
-    "created_at": createdAt?.toIso8601String() ?? "",
-    "updated_at": updatedAt?.toIso8601String() ?? "",
-  };
+        "id": id,
+        "name": name,
+        "description": description ?? "",
+        "price": price,
+        "stock": stock,
+        "image": image,
+        "is_best_seller": isBestSeller ? 1 : 0,
+        "created_at": createdAt?.toIso8601String() ?? "",
+        "updated_at": updatedAt?.toIso8601String() ?? "",
+      };
 }

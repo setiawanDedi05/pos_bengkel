@@ -9,6 +9,7 @@ import 'package:pos_bengkel/core/constants/colors.dart';
 import 'package:pos_bengkel/core/extensions/build_context_ext.dart';
 import 'package:pos_bengkel/data/datasources/product_local_datasource.dart';
 import 'package:pos_bengkel/presentation/home/bloc/product/product_bloc.dart';
+import 'package:pos_bengkel/presentation/setting/bloc/sync_order/sync_order_bloc.dart';
 import 'package:pos_bengkel/presentation/setting/pages/manage_product_page.dart';
 import '../../../data/datasources/auth_local_datasource.dart';
 import '../../auth/pages/login_page.dart';
@@ -22,6 +23,12 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
+  void syncData(dynamic data) async {
+    await ProductLocalDataSource.instance.removeAllDataProduct();
+    await ProductLocalDataSource.instance
+        .insertAllProduct(data.contentResponse.toList());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +53,7 @@ class _SettingPageState extends State<SettingPage> {
                 isImage: true,
                 size: 72,
               ),
-              SpaceWidth(16),
+              const SpaceWidth(16),
               MenuButton(
                 iconPath: Assets.images.managePrinter.path,
                 label: 'Kelola Printer',
@@ -56,19 +63,24 @@ class _SettingPageState extends State<SettingPage> {
               )
             ],
           ),
-          SpaceHeight(50),
+          const SpaceHeight(50),
           BlocConsumer<ProductBloc, ProductState>(
             listener: (context, state) {
               state.maybeMap(
                   orElse: () {},
-                  success: (_) async {
-                    await ProductLocalDataSource.instance
-                        .removeAllDataProduct();
-                    await ProductLocalDataSource.instance
-                        .insertAllProduct(_.contentResponse.toList());
+                  error: (error) {
+                    var message = jsonDecode(error.message);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(message["message"]),
+                        backgroundColor: AppColors.primary,
+                      ),
+                    );
+                  },
+                  success: (data) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
-                        content: Text("Sync Data Berhasil"),
+                        content: Text("Sync Data Product Berhasil"),
                         backgroundColor: AppColors.primary,
                       ),
                     );
@@ -82,7 +94,44 @@ class _SettingPageState extends State<SettingPage> {
                           .read<ProductBloc>()
                           .add(const ProductEvent.fetch());
                     },
-                    child: const Text("Sync Data"));
+                    child: const Text("Sync Data Product"));
+              }, loading: () {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              });
+            },
+          ),
+          BlocConsumer<SyncOrderBloc, SyncOrderState>(
+            listener: (context, state) {
+              state.maybeMap(
+                  orElse: () {},
+                  error: (error) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(error.message),
+                        backgroundColor: AppColors.primary,
+                      ),
+                    );
+                  },
+                  success: (data) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text("Sync Data Order Berhasil"),
+                        backgroundColor: AppColors.primary,
+                      ),
+                    );
+                  });
+            },
+            builder: (context, state) {
+              return state.maybeWhen(orElse: () {
+                return ElevatedButton(
+                    onPressed: () {
+                      context
+                          .read<SyncOrderBloc>()
+                          .add(const SyncOrderEvent.syncOrder());
+                    },
+                    child: const Text("Sync Data Order"));
               }, loading: () {
                 return const Center(
                   child: CircularProgressIndicator(),

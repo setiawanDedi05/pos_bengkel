@@ -46,6 +46,8 @@ dependencies:
   shared_preferences: ^2.2.2
   cached_network_image: ^3.3.1
   sqflite: ^2.3.2
+  badges: ^3.1.2
+  blue_thermal_printer: ^1.2.3
 
 dev_dependencies:
   flutter_test:

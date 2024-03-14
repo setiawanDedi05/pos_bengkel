@@ -10,7 +10,7 @@ import 'spaces.dart';
 
 class ImagePickerWidget extends StatefulWidget {
   final String label;
-  final void Function(File? file) onChanged;
+  final void Function(XFile? file) onChanged;
   final bool showLabel;
 
   const ImagePickerWidget({
@@ -35,7 +35,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
     setState(() {
       if (pickedFile != null) {
         imagePath = pickedFile.path;
-        widget.onChanged(File(imagePath!));
+        widget.onChanged(pickedFile);
       } else {
         debugPrint('No image selected.');
         widget.onChanged(null);
@@ -91,7 +91,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
                   width: 127.0,
                   onPressed: _pickImage,
                   label: 'Choose Photo',
-                  fontSize: 12.0,
+                  fontSize: 10.0,
                   borderRadius: 5.0,
                 ),
               ),
