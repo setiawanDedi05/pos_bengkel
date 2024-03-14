@@ -2,10 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 import 'package:pos_bengkel/core/extensions/build_context_ext.dart';
-import 'package:pos_bengkel/core/extensions/date_time_ext.dart';
-import 'package:pos_bengkel/presentation/home/bloc/checkout/checkout_bloc.dart';
 import 'package:pos_bengkel/presentation/order/bloc/order/order_bloc.dart';
 import 'package:pos_bengkel/presentation/order/bloc/qris/qris_bloc.dart';
 import 'package:pos_bengkel/presentation/order/widgets/payment_success_dialog.dart';
@@ -18,9 +15,9 @@ import '../../home/models/order_item.dart';
 import '../models/order_model.dart';
 
 class PaymentQrisDialog extends StatefulWidget {
-  int price;
+  final int price;
 
-  PaymentQrisDialog({required this.price, super.key});
+  const PaymentQrisDialog({required this.price, super.key});
 
   @override
   State<PaymentQrisDialog> createState() => _PaymentQrisDialogState();
@@ -61,7 +58,7 @@ class _PaymentQrisDialogState extends State<PaymentQrisDialog> {
       );
       ProductLocalDataSource.instance.saveOrder(order);
     } catch (error) {
-      print(error.toString());
+      debugPrint(error.toString());
     }
   }
 
