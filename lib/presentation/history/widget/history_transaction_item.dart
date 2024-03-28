@@ -38,9 +38,9 @@ class _HistoryTransactionItemState extends State<HistoryTransactionItem> {
             const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         tilePadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         title: Text(
-          widget.data.paymentMethod.toUpperCase(),
+          "${widget.data.paymentMethod.toUpperCase()} - ${widget.data.orderName}",
           style: TextStyle(
-              fontSize: 16,
+              fontSize: 12,
               fontWeight: FontWeight.bold,
               color: !widget.data.isSync ? AppColors.primary : AppColors.grey),
         ),

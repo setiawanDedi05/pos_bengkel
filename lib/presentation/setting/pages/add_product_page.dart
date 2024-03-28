@@ -114,6 +114,7 @@ class _AddProductPageState extends State<AddProductPage> {
                       backgroundColor: AppColors.primary,
                     ),
                   );
+                  context.read<ProductBloc>().add(const ProductEvent.fetch());
                   Navigator.pop(context);
                 },
                 error: (error){
@@ -150,7 +151,6 @@ class _AddProductPageState extends State<AddProductPage> {
                         isBestSeller: isBestSeller,
                         image: imageFile!.path
                     );
-                    // context.read<ProductBloc>().add(ProductEvent.addProduct(product, imageFile!));
                     context.read<ProductBloc>().add(ProductEvent.addProduct(product, imageFile!));
                   },
                   label: 'Simpan',

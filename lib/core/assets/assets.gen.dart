@@ -33,6 +33,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/done.svg
   SvgGenImage get done => const SvgGenImage('assets/icons/done.svg');
 
+  /// File path: assets/icons/draft_cart.svg
+  SvgGenImage get draftCart => const SvgGenImage('assets/icons/draft_cart.svg');
+
   /// File path: assets/icons/drink.svg
   SvgGenImage get drink => const SvgGenImage('assets/icons/drink.svg');
 
@@ -71,6 +74,7 @@ class $AssetsIconsGen {
         debit,
         delete,
         done,
+        draftCart,
         drink,
         food,
         history,
@@ -87,29 +91,9 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/f1.jpeg
-  AssetGenImage get f1 => const AssetGenImage('assets/images/f1.jpeg');
-
-  /// File path: assets/images/f2.jpeg
-  AssetGenImage get f2 => const AssetGenImage('assets/images/f2.jpeg');
-
-  /// File path: assets/images/f3.jpeg
-  AssetGenImage get f3 => const AssetGenImage('assets/images/f3.jpeg');
-
-  /// File path: assets/images/f4.jpeg
-  AssetGenImage get f4 => const AssetGenImage('assets/images/f4.jpeg');
-
-  /// File path: assets/images/f5.jpeg
-  AssetGenImage get f5 => const AssetGenImage('assets/images/f5.jpeg');
-
-  /// File path: assets/images/f6.jpeg
-  AssetGenImage get f6 => const AssetGenImage('assets/images/f6.jpeg');
-
-  /// File path: assets/images/f7.jpeg
-  AssetGenImage get f7 => const AssetGenImage('assets/images/f7.jpeg');
-
-  /// File path: assets/images/f8.jpeg
-  AssetGenImage get f8 => const AssetGenImage('assets/images/f8.jpeg');
+  /// File path: assets/images/background.jpg
+  AssetGenImage get background =>
+      const AssetGenImage('assets/images/background.jpg');
 
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
@@ -127,20 +111,8 @@ class $AssetsImagesGen {
       const AssetGenImage('assets/images/manage_product.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [
-        f1,
-        f2,
-        f3,
-        f4,
-        f5,
-        f6,
-        f7,
-        f8,
-        logo,
-        managePrinter,
-        managePrinterx,
-        manageProduct
-      ];
+  List<AssetGenImage> get values =>
+      [background, logo, managePrinter, managePrinterx, manageProduct];
 }
 
 class Assets {

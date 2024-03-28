@@ -17,7 +17,7 @@ class ProductLocalDataSource {
     final dbPath = await getDatabasesPath();
     final path = dbPath + filePath;
 
-    return await openDatabase(path, version: 7, onCreate: _createDB);
+    return await openDatabase(path, version: 8, onCreate: _createDB);
   }
 
   Future<void> _createDB(Database db, int version) async {
@@ -38,14 +38,17 @@ class ProductLocalDataSource {
     await db.execute('''
       CREATE TABLE $tableOrder (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
+        order_name TEXT,
         nominal INTEGER,
         total_qty INTEGER,
         total_price INTEGER,
+        service_fee INTEGER,
         payment_method TEXT,
         id_cashier INTEGER,
         cashier_name TEXT,
         transaction_time TEXT,
-        is_sync INTEGER DEFAULT 0
+        is_sync INTEGER DEFAULT 0,
+        is_checkout INTEGER
       )
     ''');
 
@@ -136,7 +139,17 @@ class ProductLocalDataSource {
   Future<List<OrderModel>> getOrderNotSync() async {
     try {
       final db = await instance.database;
-      final result = await db.query(tableOrder, where: 'is_sync = 0');
+      final result = await db.query(tableOrder, where: 'is_sync = ? and payment_method != ? and is_checkout = ?', whereArgs: ["0", "qris", "1"]);
+      return result.map((e) => OrderModel.fromSqlite(e)).toList();
+    } catch (error) {
+      return [];
+    }
+  }
+
+  Future<List<OrderModel>> getOrderNotCheckout() async {
+    try {
+      final db = await instance.database;
+      final result = await db.query(tableOrder, where: 'is_checkout = ?', whereArgs: ["0"], orderBy: 'id DESC');
       return result.map((e) => OrderModel.fromSqlite(e)).toList();
     } catch (error) {
       return [];
@@ -146,10 +159,20 @@ class ProductLocalDataSource {
   Future<List<OrderModel>> getAllOrders() async {
     try {
       final db = await instance.database;
-      final result = await db.query(tableOrder, orderBy: 'id DESC');
+      final result = await db.query(tableOrder, where: 'is_checkout = ?', whereArgs: ['1'], orderBy: 'id DESC');
       return result.map((e) => OrderModel.fromSqlite(e)).toList();
     } catch (error) {
       return [];
+    }
+  }
+
+  Future<OrderModel?> getOrderById(int id) async {
+    try {
+      final db = await instance.database;
+      final result = await db.query(tableOrder, where: 'id = ?', whereArgs: [id]);
+      return OrderModel.fromSqlite(result.first);
+    } catch (error) {
+      return null;
     }
   }
 

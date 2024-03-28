@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pos_bengkel/data/datasources/auth_local_datasource.dart';
+import 'package:pos_bengkel/data/datasources/firebase_messaging_datasource.dart';
 import 'package:pos_bengkel/data/datasources/midtrans_remote_datasource.dart';
 import 'package:pos_bengkel/data/datasources/order_remote_datasource.dart';
 import 'package:pos_bengkel/data/datasources/product_remote_datasource.dart';
 import 'package:pos_bengkel/presentation/auth/pages/login_page.dart';
+import 'package:pos_bengkel/presentation/draft_order/bloc/draft_order/draft_order_bloc.dart';
 import 'package:pos_bengkel/presentation/history/bloc/history/history_bloc.dart';
 import 'package:pos_bengkel/presentation/home/bloc/checkout/checkout_bloc.dart';
 import 'package:pos_bengkel/presentation/home/bloc/logout/logout_bloc.dart';
@@ -14,12 +16,18 @@ import 'package:pos_bengkel/presentation/home/pages/dashboard_page.dart';
 import 'package:pos_bengkel/presentation/order/bloc/order/order_bloc.dart';
 import 'package:pos_bengkel/presentation/order/bloc/qris/qris_bloc.dart';
 import 'package:pos_bengkel/presentation/setting/bloc/sync_order/sync_order_bloc.dart';
-
 import 'core/constants/colors.dart';
 import 'data/datasources/auth_remote_datasource.dart';
 import 'presentation/auth/bloc/login/login_bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await FirebaseMessagingDatasource().initialize();
   runApp(const MyApp());
 }
 
@@ -48,7 +56,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => QrisBloc(MidtransRemoteDatasource()),
         ),
-        BlocProvider(create: (context) => HistoryBloc()),
+        BlocProvider(create: (context) => HistoryBloc()..add(const HistoryEvent.fetch())),
+        BlocProvider(create: (context) => DraftOrderBloc()..add(const DraftOrderEvent.fetch())),
         BlocProvider(
           create: (context) => SyncOrderBloc(
             OrderRemoteDatasource(),
@@ -64,7 +73,7 @@ class MyApp extends StatelessWidget {
             Theme.of(context).textTheme,
           ),
           appBarTheme: AppBarTheme(
-            color: AppColors.white,
+            color: AppColors.white.withOpacity(0.5),
             elevation: 0,
             titleTextStyle: GoogleFonts.quicksand(
               color: AppColors.primary,

@@ -10,7 +10,7 @@ part 'order_state.dart';
 part 'order_bloc.freezed.dart';
 
 class OrderBloc extends Bloc<OrderEvent, OrderState> {
-  OrderBloc() : super(const _Success([], 0, 0, '', 0)) {
+  OrderBloc() : super(const _Success([], 0, 0, '', 0, 0, 'anonymous')) {
     on<_AddPaymentMethod>(
       (event, emit) {
         emit(const _Loading());
@@ -27,6 +27,8 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
             ),
             event.paymentMethod,
             0,
+            0,
+            'anonymous'
           ),
         );
       },
@@ -43,6 +45,44 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
             currentState.totalPrice,
             currentState.paymentMethod,
             event.nominal,
+            currentState.serviceFee,
+            currentState.orderName
+          ),
+        );
+      },
+    );
+
+    on<_AddServiceFee>(
+          (event, emit) {
+        var currentState = state as _Success;
+        emit(const _Loading());
+        emit(
+          _Success(
+            currentState.items,
+            currentState.totalQty,
+            currentState.totalPrice,
+            currentState.paymentMethod,
+            currentState.nominal,
+            event.fee,
+            currentState.orderName
+          ),
+        );
+      },
+    );
+
+    on<_AddOrderName>(
+          (event, emit) {
+        var currentState = state as _Success;
+        emit(const _Loading());
+        emit(
+          _Success(
+              currentState.items,
+              currentState.totalQty,
+              currentState.totalPrice,
+              currentState.paymentMethod,
+              currentState.nominal,
+              currentState.serviceFee,
+              event.name
           ),
         );
       },
@@ -50,7 +90,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
 
     on<_Started>((event, emit){
       emit(const _Loading());
-      emit(const _Success([], 0, 0, '', 0));
+      emit(const _Success([], 0, 0, '', 0, 0, "anonymous"));
     });
   }
 }

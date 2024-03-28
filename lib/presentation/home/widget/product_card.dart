@@ -25,6 +25,9 @@ class ProductCard extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(16.0),
           decoration: ShapeDecoration(
+            color: int.parse(data.stock) > 0
+                ? AppColors.white
+                : AppColors.disabled,
             shape: RoundedRectangleBorder(
               side: const BorderSide(width: 1, color: AppColors.card),
               borderRadius: BorderRadius.circular(19),
@@ -68,11 +71,8 @@ class ProductCard extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
               ),
               Text(
-                "stock ${data.stock}",
-                style: const TextStyle(
-                  fontSize: 12,
-                  color: AppColors.grey
-                ),
+                int.parse(data.stock) > 0 ? "Stock ${data.stock}" : "Habis",
+                style: TextStyle(fontSize: 12, color: int.parse(data.stock) > 20 ? AppColors.grey : AppColors.red),
               ),
               const SpaceHeight(8.0),
               Row(
@@ -86,26 +86,29 @@ class ProductCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      context.read<CheckoutBloc>().add(
-                            CheckoutEvent.addItem(
-                              data,
-                            ),
-                          );
-                    },
-                    child: Container(
-                        padding: const EdgeInsets.all(6),
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(9.0)),
-                          color: AppColors.primary,
-                        ),
-                        child: const Icon(
-                          Icons.add,
-                          color: Colors.white,
-                        ) //Assets.icons.orders.svg(),
-                        ),
-                  ),
+                  int.parse(data.stock) > 0
+                      ? GestureDetector(
+                          onTap: () {
+                            context.read<CheckoutBloc>().add(
+                                  CheckoutEvent.addItem(
+                                    data,
+                                  ),
+                                );
+                          },
+                          child: Container(
+                              padding: const EdgeInsets.all(6),
+                              decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(9.0)),
+                                color: AppColors.primary,
+                              ),
+                              child: const Icon(
+                                Icons.add,
+                                color: Colors.white,
+                              ) //Assets.icons.orders.svg(),
+                              ),
+                        )
+                      : Container(),
                 ],
               ),
             ],

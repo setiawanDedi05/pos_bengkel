@@ -10,17 +10,21 @@ class AuthRemoteDatasource {
     String email,
     String password,
   ) async {
-    final response = await http.post(
-      Uri.parse('${Variables.baseUrl}/api/login'),
-      body: {
-        'email': email,
-        'password': password,
-      },
-    );
-    if (response.statusCode == 200) {
-      return right(AuthResponseModel.fromJson(response.body));
-    } else {
-      return left(response.body);
+    try{
+      final response = await http.post(
+        Uri.parse('${Variables.baseUrl}/api/login'),
+        body: {
+          'email': email,
+          'password': password,
+        },
+      );
+      if (response.statusCode == 200) {
+        return right(AuthResponseModel.fromJson(response.body));
+      } else {
+        return left(response.body);
+      }
+    }catch(_){
+      return left("Terjadi Kesalah, dalam Internal Server, Silahkan Coba lagi nanti");
     }
   }
 
@@ -37,6 +41,24 @@ class AuthRemoteDatasource {
       return right(response.body);
     } else {
       return left(response.body);
+    }
+  }
+
+  Future<Either<String, String>> updateFCMToken(String fcmToken) async {
+    final authData = await AuthLocalDataSource().getAuthData();
+    final response = await http.post(
+      Uri.parse('${Variables.baseUrl}/api/update-fcm'),
+      headers: {
+        'Authorization': 'Bearer ${authData.token}',
+        'Accept': 'application/json',
+      },
+      body: { 'fcm_id': fcmToken }
+    );
+
+    if(response.statusCode == 20){
+      return Right(response.body);
+    }else{
+      return Left(response.body);
     }
   }
 }

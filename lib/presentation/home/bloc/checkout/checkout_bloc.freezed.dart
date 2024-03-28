@@ -21,6 +21,7 @@ mixin _$CheckoutEvent {
     required TResult Function() started,
     required TResult Function(Product product) addItem,
     required TResult Function(Product product) reduceItem,
+    required TResult Function(Product product) reduceOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$CheckoutEvent {
     TResult? Function()? started,
     TResult? Function(Product product)? addItem,
     TResult? Function(Product product)? reduceItem,
+    TResult? Function(Product product)? reduceOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$CheckoutEvent {
     TResult Function()? started,
     TResult Function(Product product)? addItem,
     TResult Function(Product product)? reduceItem,
+    TResult Function(Product product)? reduceOrder,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$CheckoutEvent {
     required TResult Function(_Started value) started,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_ReduceItem value) reduceItem,
+    required TResult Function(_ReduceOrder value) reduceOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$CheckoutEvent {
     TResult? Function(_Started value)? started,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_ReduceItem value)? reduceItem,
+    TResult? Function(_ReduceOrder value)? reduceOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$CheckoutEvent {
     TResult Function(_Started value)? started,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_ReduceItem value)? reduceItem,
+    TResult Function(_ReduceOrder value)? reduceOrder,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +127,7 @@ class _$StartedImpl implements _Started {
     required TResult Function() started,
     required TResult Function(Product product) addItem,
     required TResult Function(Product product) reduceItem,
+    required TResult Function(Product product) reduceOrder,
   }) {
     return started();
   }
@@ -131,6 +138,7 @@ class _$StartedImpl implements _Started {
     TResult? Function()? started,
     TResult? Function(Product product)? addItem,
     TResult? Function(Product product)? reduceItem,
+    TResult? Function(Product product)? reduceOrder,
   }) {
     return started?.call();
   }
@@ -141,6 +149,7 @@ class _$StartedImpl implements _Started {
     TResult Function()? started,
     TResult Function(Product product)? addItem,
     TResult Function(Product product)? reduceItem,
+    TResult Function(Product product)? reduceOrder,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -155,6 +164,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(_Started value) started,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_ReduceItem value) reduceItem,
+    required TResult Function(_ReduceOrder value) reduceOrder,
   }) {
     return started(this);
   }
@@ -165,6 +175,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(_Started value)? started,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_ReduceItem value)? reduceItem,
+    TResult? Function(_ReduceOrder value)? reduceOrder,
   }) {
     return started?.call(this);
   }
@@ -175,6 +186,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_ReduceItem value)? reduceItem,
+    TResult Function(_ReduceOrder value)? reduceOrder,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -255,6 +267,7 @@ class _$AddItemImpl implements _AddItem {
     required TResult Function() started,
     required TResult Function(Product product) addItem,
     required TResult Function(Product product) reduceItem,
+    required TResult Function(Product product) reduceOrder,
   }) {
     return addItem(product);
   }
@@ -265,6 +278,7 @@ class _$AddItemImpl implements _AddItem {
     TResult? Function()? started,
     TResult? Function(Product product)? addItem,
     TResult? Function(Product product)? reduceItem,
+    TResult? Function(Product product)? reduceOrder,
   }) {
     return addItem?.call(product);
   }
@@ -275,6 +289,7 @@ class _$AddItemImpl implements _AddItem {
     TResult Function()? started,
     TResult Function(Product product)? addItem,
     TResult Function(Product product)? reduceItem,
+    TResult Function(Product product)? reduceOrder,
     required TResult orElse(),
   }) {
     if (addItem != null) {
@@ -289,6 +304,7 @@ class _$AddItemImpl implements _AddItem {
     required TResult Function(_Started value) started,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_ReduceItem value) reduceItem,
+    required TResult Function(_ReduceOrder value) reduceOrder,
   }) {
     return addItem(this);
   }
@@ -299,6 +315,7 @@ class _$AddItemImpl implements _AddItem {
     TResult? Function(_Started value)? started,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_ReduceItem value)? reduceItem,
+    TResult? Function(_ReduceOrder value)? reduceOrder,
   }) {
     return addItem?.call(this);
   }
@@ -309,6 +326,7 @@ class _$AddItemImpl implements _AddItem {
     TResult Function(_Started value)? started,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_ReduceItem value)? reduceItem,
+    TResult Function(_ReduceOrder value)? reduceOrder,
     required TResult orElse(),
   }) {
     if (addItem != null) {
@@ -394,6 +412,7 @@ class _$ReduceItemImpl implements _ReduceItem {
     required TResult Function() started,
     required TResult Function(Product product) addItem,
     required TResult Function(Product product) reduceItem,
+    required TResult Function(Product product) reduceOrder,
   }) {
     return reduceItem(product);
   }
@@ -404,6 +423,7 @@ class _$ReduceItemImpl implements _ReduceItem {
     TResult? Function()? started,
     TResult? Function(Product product)? addItem,
     TResult? Function(Product product)? reduceItem,
+    TResult? Function(Product product)? reduceOrder,
   }) {
     return reduceItem?.call(product);
   }
@@ -414,6 +434,7 @@ class _$ReduceItemImpl implements _ReduceItem {
     TResult Function()? started,
     TResult Function(Product product)? addItem,
     TResult Function(Product product)? reduceItem,
+    TResult Function(Product product)? reduceOrder,
     required TResult orElse(),
   }) {
     if (reduceItem != null) {
@@ -428,6 +449,7 @@ class _$ReduceItemImpl implements _ReduceItem {
     required TResult Function(_Started value) started,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_ReduceItem value) reduceItem,
+    required TResult Function(_ReduceOrder value) reduceOrder,
   }) {
     return reduceItem(this);
   }
@@ -438,6 +460,7 @@ class _$ReduceItemImpl implements _ReduceItem {
     TResult? Function(_Started value)? started,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_ReduceItem value)? reduceItem,
+    TResult? Function(_ReduceOrder value)? reduceOrder,
   }) {
     return reduceItem?.call(this);
   }
@@ -448,6 +471,7 @@ class _$ReduceItemImpl implements _ReduceItem {
     TResult Function(_Started value)? started,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_ReduceItem value)? reduceItem,
+    TResult Function(_ReduceOrder value)? reduceOrder,
     required TResult orElse(),
   }) {
     if (reduceItem != null) {
@@ -463,6 +487,151 @@ abstract class _ReduceItem implements CheckoutEvent {
   Product get product;
   @JsonKey(ignore: true)
   _$$ReduceItemImplCopyWith<_$ReduceItemImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ReduceOrderImplCopyWith<$Res> {
+  factory _$$ReduceOrderImplCopyWith(
+          _$ReduceOrderImpl value, $Res Function(_$ReduceOrderImpl) then) =
+      __$$ReduceOrderImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Product product});
+}
+
+/// @nodoc
+class __$$ReduceOrderImplCopyWithImpl<$Res>
+    extends _$CheckoutEventCopyWithImpl<$Res, _$ReduceOrderImpl>
+    implements _$$ReduceOrderImplCopyWith<$Res> {
+  __$$ReduceOrderImplCopyWithImpl(
+      _$ReduceOrderImpl _value, $Res Function(_$ReduceOrderImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? product = null,
+  }) {
+    return _then(_$ReduceOrderImpl(
+      null == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as Product,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ReduceOrderImpl implements _ReduceOrder {
+  const _$ReduceOrderImpl(this.product);
+
+  @override
+  final Product product;
+
+  @override
+  String toString() {
+    return 'CheckoutEvent.reduceOrder(product: $product)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ReduceOrderImpl &&
+            (identical(other.product, product) || other.product == product));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, product);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ReduceOrderImplCopyWith<_$ReduceOrderImpl> get copyWith =>
+      __$$ReduceOrderImplCopyWithImpl<_$ReduceOrderImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(Product product) addItem,
+    required TResult Function(Product product) reduceItem,
+    required TResult Function(Product product) reduceOrder,
+  }) {
+    return reduceOrder(product);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(Product product)? addItem,
+    TResult? Function(Product product)? reduceItem,
+    TResult? Function(Product product)? reduceOrder,
+  }) {
+    return reduceOrder?.call(product);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(Product product)? addItem,
+    TResult Function(Product product)? reduceItem,
+    TResult Function(Product product)? reduceOrder,
+    required TResult orElse(),
+  }) {
+    if (reduceOrder != null) {
+      return reduceOrder(product);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_AddItem value) addItem,
+    required TResult Function(_ReduceItem value) reduceItem,
+    required TResult Function(_ReduceOrder value) reduceOrder,
+  }) {
+    return reduceOrder(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_ReduceItem value)? reduceItem,
+    TResult? Function(_ReduceOrder value)? reduceOrder,
+  }) {
+    return reduceOrder?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_AddItem value)? addItem,
+    TResult Function(_ReduceItem value)? reduceItem,
+    TResult Function(_ReduceOrder value)? reduceOrder,
+    required TResult orElse(),
+  }) {
+    if (reduceOrder != null) {
+      return reduceOrder(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ReduceOrder implements CheckoutEvent {
+  const factory _ReduceOrder(final Product product) = _$ReduceOrderImpl;
+
+  Product get product;
+  @JsonKey(ignore: true)
+  _$$ReduceOrderImplCopyWith<_$ReduceOrderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

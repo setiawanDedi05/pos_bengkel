@@ -19,10 +19,15 @@ class QrisBloc extends Bloc<QrisEvent, QrisState> {
     });
 
     on<_CheckPaymentStatus>((event, emit) async {
-      final response = await midtransRemoteDatasource.checkStatus(event.orderId);
-      if(response.transactionStatus == 'settlement'){
-        emit(const QrisState.success("Transaksi Berhasil"));
+      try{
+        final response = await midtransRemoteDatasource.checkStatus(event.orderId);
+        if(response.transactionStatus == 'settlement'){
+          emit(const QrisState.success("Transaksi Berhasil"));
+        }
+      }catch(error){
+        emit(QrisState.error(error.toString()));
       }
+
     });
   }
 }

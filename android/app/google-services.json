@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "389592188816",
+    "project_id": "pos-bengkel-dedy",
+    "storage_bucket": "pos-bengkel-dedy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:389592188816:android:95f16ab8df0144c46e1515",
+        "android_client_info": {
+          "package_name": "com.example.pos_bengkel"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuC9Nj4n-ndEKhcPUmgqrlVX6ZJoSPdNc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

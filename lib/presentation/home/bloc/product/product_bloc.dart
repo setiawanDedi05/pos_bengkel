@@ -22,13 +22,17 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       : super(const ProductState.initial()) {
     on<_Fetch>((event, emit) async {
       emit(const ProductState.loading());
-      final response = await _productRemoteDataSource.getProducts();
-      response.fold((l) => emit(ProductState.error(l)), (r) {
-        ProductLocalDataSource.instance.removeAllDataProduct();
-        ProductLocalDataSource.instance.insertAllProduct(r.data);
-        products = r.data;
-        emit(ProductState.success(r.data));
-      });
+      try{
+        final response = await _productRemoteDataSource.getProducts();
+        response.fold((l) => emit(ProductState.error(l)), (r) {
+          ProductLocalDataSource.instance.removeAllDataProduct();
+          ProductLocalDataSource.instance.insertAllProduct(r.data);
+          products = r.data;
+          emit(ProductState.success(r.data));
+        });
+      }catch(error){
+        emit(ProductState.error(error.toString()));
+      }
     });
 
     on<_FetchByName>((event, emit) async {

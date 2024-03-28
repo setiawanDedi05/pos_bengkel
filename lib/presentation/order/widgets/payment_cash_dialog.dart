@@ -17,8 +17,10 @@ import '../../home/models/order_item.dart';
 
 class PaymentCashDialog extends StatefulWidget {
   final int price;
+  final String orderName;
+  final int fee;
 
-  const PaymentCashDialog({super.key, required this.price});
+  const PaymentCashDialog({super.key, required this.price, required this.fee, required this.orderName});
 
   @override
   State<PaymentCashDialog> createState() => _PaymentCashDialogState();
@@ -30,7 +32,7 @@ class _PaymentCashDialogState extends State<PaymentCashDialog> {
   @override
   void initState() {
     priceController =
-        TextEditingController(text: widget.price.currencyFormatRp);
+        TextEditingController(text: (widget.price + widget.fee).currencyFormatRp);
     super.initState();
   }
 
@@ -52,6 +54,7 @@ class _PaymentCashDialogState extends State<PaymentCashDialog> {
 
       final order = OrderModel(
           paymentMethod: paymentMethod,
+          orderName: widget.orderName,
           nominal: nominal,
           items: data,
           totalQty: totalQty,
@@ -59,10 +62,12 @@ class _PaymentCashDialogState extends State<PaymentCashDialog> {
           idCashier: authData.user.id,
           cashierName: authData.user.name,
           isSync: false,
-          transactionTime: DateTime.now().toString());
+          transactionTime: DateTime.now().toString(),
+          isCheckout: true,
+      );
       ProductLocalDataSource.instance.saveOrder(order);
     } catch (error) {
-      print(error.toString());
+      debugPrint(error.toString());
     }
   }
 
@@ -116,7 +121,7 @@ class _PaymentCashDialogState extends State<PaymentCashDialog> {
               Button.filled(
                 onPressed: () {
                   setState(() {
-                    priceController!.text = widget.price.currencyFormatRp;
+                    priceController!.text = (widget.price + widget.fee).currencyFormatRp;
                   });
                 },
                 label: 'Uang Pas',
@@ -129,7 +134,7 @@ class _PaymentCashDialogState extends State<PaymentCashDialog> {
               Flexible(
                 child: Button.filled(
                   onPressed: () {},
-                  label: widget.price.currencyFormatRp,
+                  label: (widget.price + widget.fee).currencyFormatRp,
                   disabled: true,
                   textColor: AppColors.primary,
                   fontSize: 12.0,
@@ -143,7 +148,7 @@ class _PaymentCashDialogState extends State<PaymentCashDialog> {
             listener: (context, state) {
               state.maybeWhen(
                 orElse: () {},
-                success: (data, totalQty, totalPrice, paymentMethod, nominal) {
+                success: (data, totalQty, totalPrice, paymentMethod, nominal, serviceFee, orderName) {
                   handleProsses(
                       paymentMethod: paymentMethod,
                       data: data,
@@ -163,7 +168,7 @@ class _PaymentCashDialogState extends State<PaymentCashDialog> {
               return state.maybeWhen(
                   orElse: () => const SizedBox(),
                   success:
-                      (data, totalQty, totalPrice, paymentMethod, nominal) {
+                      (data, totalQty, totalPrice, paymentMethod, nominal, serviceFee, orderName) {
                     return Button.filled(
                       onPressed: () {
                         context.read<OrderBloc>().add(OrderEvent.addNominal(

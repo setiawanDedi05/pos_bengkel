@@ -6,6 +6,8 @@ import 'package:pos_bengkel/core/extensions/build_context_ext.dart';
 import 'package:pos_bengkel/presentation/order/bloc/order/order_bloc.dart';
 import 'package:pos_bengkel/presentation/order/bloc/qris/qris_bloc.dart';
 import 'package:pos_bengkel/presentation/order/widgets/payment_success_dialog.dart';
+import 'package:pos_bengkel/presentation/setting/bloc/sync_order/sync_order_bloc.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../../core/components/spaces.dart';
 import '../../../core/constants/colors.dart';
@@ -16,8 +18,10 @@ import '../models/order_model.dart';
 
 class PaymentQrisDialog extends StatefulWidget {
   final int price;
+  final String orderName;
+  final int fee;
 
-  const PaymentQrisDialog({required this.price, super.key});
+  const PaymentQrisDialog({required this.price, required this.orderName, required this.fee, super.key});
 
   @override
   State<PaymentQrisDialog> createState() => _PaymentQrisDialogState();
@@ -36,27 +40,47 @@ class _PaymentQrisDialogState extends State<PaymentQrisDialog> {
     super.initState();
   }
 
+  void launchUrl(String url) async {
+    if (await canLaunchUrlString(url)) {
+      await launchUrlString(url);
+    }
+  }
+
+  void syncAndShowSuccess(int id){
+    context.read<SyncOrderBloc>().add(SyncOrderEvent.syncOrderById(id));
+    context.pop();
+    showDialog(
+      context: context,
+      builder: (context) => const PaymentSuccessDialog(),
+    );
+  }
+
   void handleProsses({
     required String paymentMethod,
     required int nominal,
     required List<OrderItem> data,
     required int totalQty,
     required int totalPrice,
+    required int serviceFee
   }) async {
     try {
       final authData = await AuthLocalDataSource().getAuthData();
       final order = OrderModel(
-          paymentMethod: paymentMethod,
-          nominal: nominal,
-          items: data,
-          totalQty: totalQty,
-          totalPrice: totalPrice,
-          idCashier: authData.user.id,
-          cashierName: authData.user.name,
-          isSync: false,
-          transactionTime: DateTime.now().toString(),
+        paymentMethod: paymentMethod,
+        nominal: nominal,
+        orderName: widget.orderName,
+        items: data,
+        totalQty: totalQty,
+        totalPrice: totalPrice,
+        idCashier: authData.user.id,
+        cashierName: authData.user.name,
+        serviceFee: serviceFee,
+        isSync: false,
+        isCheckout: true,
+        transactionTime: DateTime.now().toString(),
       );
-      ProductLocalDataSource.instance.saveOrder(order);
+      final int id = await ProductLocalDataSource.instance.saveOrder(order);
+      syncAndShowSuccess(id);
     } catch (error) {
       debugPrint(error.toString());
     }
@@ -91,7 +115,7 @@ class _PaymentQrisDialogState extends State<PaymentQrisDialog> {
                 return const Center(
                   child: CircularProgressIndicator(),
                 );
-              }, success: (data, totalQty, totalPrice, paymentMethod, _) {
+              }, success: (data, totalQty, totalPrice, paymentMethod, _, serviceFee, orderName) {
                 return Container(
                   width: context.deviceWidth,
                   padding: const EdgeInsets.all(14.0),
@@ -111,47 +135,24 @@ class _PaymentQrisDialogState extends State<PaymentQrisDialog> {
                                 timer = Timer.periodic(
                                   timerSecond,
                                   (timer) {
-                                    // context.read<QrisBloc>().add(
-                                    //       QrisEvent.checkPaymentStatus(
-                                    //         orderId,
-                                    //       ),
-                                    //     );
-
-                                    //ini di by pass ceritanya bayar
-                                    context.read<OrderBloc>().add(OrderEvent.addNominal(totalPrice));
-                                    handleProsses(
-                                      paymentMethod: paymentMethod,
-                                      nominal: totalPrice,
-                                      data: data,
-                                      totalQty: totalQty,
-                                      totalPrice: totalPrice,
-                                    );
-                                    context.pop();
-                                    showDialog(
-                                      context: context,
-                                      builder: (context) =>
-                                      const PaymentSuccessDialog(),
-                                    );
+                                    context.read<QrisBloc>().add(
+                                          QrisEvent.checkPaymentStatus(
+                                            orderId,
+                                          ),
+                                        );
                                   },
                                 );
                               },
                               success: (message) {
                                 timer?.cancel();
-
-                                //comment untuk bypass
-                                // handleProsses(
-                                //   paymentMethod: paymentMethod,
-                                //   nominal: totalPrice,
-                                //   data: data,
-                                //   totalQty: totalQty,
-                                //   totalPrice: totalPrice,
-                                // );
-                                // context.pop();
-                                // showDialog(
-                                //   context: context,
-                                //   builder: (context) =>
-                                //       const PaymentSuccessDialog(),
-                                // );
+                                handleProsses(
+                                  paymentMethod: paymentMethod,
+                                  nominal: totalPrice,
+                                  data: data,
+                                  totalQty: totalQty,
+                                  totalPrice: totalPrice,
+                                  serviceFee: serviceFee
+                                );
                               });
                         },
                         child: BlocBuilder<QrisBloc, QrisState>(
@@ -162,11 +163,22 @@ class _PaymentQrisDialogState extends State<PaymentQrisDialog> {
                                       height: 256.0,
                                     ),
                                 qrisResponse: (data) {
+                                  context
+                                      .read<OrderBloc>()
+                                      .add(OrderEvent.addNominal(totalPrice));
+                                  debugPrint(data.actions[1].url);
                                   return SizedBox(
-                                    width: 256.0,
-                                    height: 256.0,
+                                    width: 356.0,
+                                    height: 356.0,
                                     child:
-                                        Image.network(data.actions.first.url),
+                                        Column(
+                                          children: [
+                                            Image.network(data.actions.first.url),
+                                            TextButton(onPressed: () {
+                                              launchUrl(data.actions[1].url);
+                                            }, child: const Text("Simulasikan pembayaran"),)
+                                          ],
+                                        ),
                                   );
                                 },
                                 loading: () {

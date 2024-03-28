@@ -22,6 +22,8 @@ mixin _$OrderEvent {
     required TResult Function(String paymentMethod, List<OrderItem> items)
         addPaymentMethod,
     required TResult Function(int nominal) addNominal,
+    required TResult Function(int fee) addServiceFee,
+    required TResult Function(String name) addOrderName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +32,8 @@ mixin _$OrderEvent {
     TResult? Function(String paymentMethod, List<OrderItem> items)?
         addPaymentMethod,
     TResult? Function(int nominal)? addNominal,
+    TResult? Function(int fee)? addServiceFee,
+    TResult? Function(String name)? addOrderName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +42,8 @@ mixin _$OrderEvent {
     TResult Function(String paymentMethod, List<OrderItem> items)?
         addPaymentMethod,
     TResult Function(int nominal)? addNominal,
+    TResult Function(int fee)? addServiceFee,
+    TResult Function(String name)? addOrderName,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -46,6 +52,8 @@ mixin _$OrderEvent {
     required TResult Function(_Started value) started,
     required TResult Function(_AddPaymentMethod value) addPaymentMethod,
     required TResult Function(_AddNominal value) addNominal,
+    required TResult Function(_AddServiceFee value) addServiceFee,
+    required TResult Function(_AddOrderName value) addOrderName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -53,6 +61,8 @@ mixin _$OrderEvent {
     TResult? Function(_Started value)? started,
     TResult? Function(_AddPaymentMethod value)? addPaymentMethod,
     TResult? Function(_AddNominal value)? addNominal,
+    TResult? Function(_AddServiceFee value)? addServiceFee,
+    TResult? Function(_AddOrderName value)? addOrderName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +70,8 @@ mixin _$OrderEvent {
     TResult Function(_Started value)? started,
     TResult Function(_AddPaymentMethod value)? addPaymentMethod,
     TResult Function(_AddNominal value)? addNominal,
+    TResult Function(_AddServiceFee value)? addServiceFee,
+    TResult Function(_AddOrderName value)? addOrderName,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -125,6 +137,8 @@ class _$StartedImpl implements _Started {
     required TResult Function(String paymentMethod, List<OrderItem> items)
         addPaymentMethod,
     required TResult Function(int nominal) addNominal,
+    required TResult Function(int fee) addServiceFee,
+    required TResult Function(String name) addOrderName,
   }) {
     return started();
   }
@@ -136,6 +150,8 @@ class _$StartedImpl implements _Started {
     TResult? Function(String paymentMethod, List<OrderItem> items)?
         addPaymentMethod,
     TResult? Function(int nominal)? addNominal,
+    TResult? Function(int fee)? addServiceFee,
+    TResult? Function(String name)? addOrderName,
   }) {
     return started?.call();
   }
@@ -147,6 +163,8 @@ class _$StartedImpl implements _Started {
     TResult Function(String paymentMethod, List<OrderItem> items)?
         addPaymentMethod,
     TResult Function(int nominal)? addNominal,
+    TResult Function(int fee)? addServiceFee,
+    TResult Function(String name)? addOrderName,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -161,6 +179,8 @@ class _$StartedImpl implements _Started {
     required TResult Function(_Started value) started,
     required TResult Function(_AddPaymentMethod value) addPaymentMethod,
     required TResult Function(_AddNominal value) addNominal,
+    required TResult Function(_AddServiceFee value) addServiceFee,
+    required TResult Function(_AddOrderName value) addOrderName,
   }) {
     return started(this);
   }
@@ -171,6 +191,8 @@ class _$StartedImpl implements _Started {
     TResult? Function(_Started value)? started,
     TResult? Function(_AddPaymentMethod value)? addPaymentMethod,
     TResult? Function(_AddNominal value)? addNominal,
+    TResult? Function(_AddServiceFee value)? addServiceFee,
+    TResult? Function(_AddOrderName value)? addOrderName,
   }) {
     return started?.call(this);
   }
@@ -181,6 +203,8 @@ class _$StartedImpl implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(_AddPaymentMethod value)? addPaymentMethod,
     TResult Function(_AddNominal value)? addNominal,
+    TResult Function(_AddServiceFee value)? addServiceFee,
+    TResult Function(_AddOrderName value)? addOrderName,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -279,6 +303,8 @@ class _$AddPaymentMethodImpl implements _AddPaymentMethod {
     required TResult Function(String paymentMethod, List<OrderItem> items)
         addPaymentMethod,
     required TResult Function(int nominal) addNominal,
+    required TResult Function(int fee) addServiceFee,
+    required TResult Function(String name) addOrderName,
   }) {
     return addPaymentMethod(paymentMethod, items);
   }
@@ -290,6 +316,8 @@ class _$AddPaymentMethodImpl implements _AddPaymentMethod {
     TResult? Function(String paymentMethod, List<OrderItem> items)?
         addPaymentMethod,
     TResult? Function(int nominal)? addNominal,
+    TResult? Function(int fee)? addServiceFee,
+    TResult? Function(String name)? addOrderName,
   }) {
     return addPaymentMethod?.call(paymentMethod, items);
   }
@@ -301,6 +329,8 @@ class _$AddPaymentMethodImpl implements _AddPaymentMethod {
     TResult Function(String paymentMethod, List<OrderItem> items)?
         addPaymentMethod,
     TResult Function(int nominal)? addNominal,
+    TResult Function(int fee)? addServiceFee,
+    TResult Function(String name)? addOrderName,
     required TResult orElse(),
   }) {
     if (addPaymentMethod != null) {
@@ -315,6 +345,8 @@ class _$AddPaymentMethodImpl implements _AddPaymentMethod {
     required TResult Function(_Started value) started,
     required TResult Function(_AddPaymentMethod value) addPaymentMethod,
     required TResult Function(_AddNominal value) addNominal,
+    required TResult Function(_AddServiceFee value) addServiceFee,
+    required TResult Function(_AddOrderName value) addOrderName,
   }) {
     return addPaymentMethod(this);
   }
@@ -325,6 +357,8 @@ class _$AddPaymentMethodImpl implements _AddPaymentMethod {
     TResult? Function(_Started value)? started,
     TResult? Function(_AddPaymentMethod value)? addPaymentMethod,
     TResult? Function(_AddNominal value)? addNominal,
+    TResult? Function(_AddServiceFee value)? addServiceFee,
+    TResult? Function(_AddOrderName value)? addOrderName,
   }) {
     return addPaymentMethod?.call(this);
   }
@@ -335,6 +369,8 @@ class _$AddPaymentMethodImpl implements _AddPaymentMethod {
     TResult Function(_Started value)? started,
     TResult Function(_AddPaymentMethod value)? addPaymentMethod,
     TResult Function(_AddNominal value)? addNominal,
+    TResult Function(_AddServiceFee value)? addServiceFee,
+    TResult Function(_AddOrderName value)? addOrderName,
     required TResult orElse(),
   }) {
     if (addPaymentMethod != null) {
@@ -424,6 +460,8 @@ class _$AddNominalImpl implements _AddNominal {
     required TResult Function(String paymentMethod, List<OrderItem> items)
         addPaymentMethod,
     required TResult Function(int nominal) addNominal,
+    required TResult Function(int fee) addServiceFee,
+    required TResult Function(String name) addOrderName,
   }) {
     return addNominal(nominal);
   }
@@ -435,6 +473,8 @@ class _$AddNominalImpl implements _AddNominal {
     TResult? Function(String paymentMethod, List<OrderItem> items)?
         addPaymentMethod,
     TResult? Function(int nominal)? addNominal,
+    TResult? Function(int fee)? addServiceFee,
+    TResult? Function(String name)? addOrderName,
   }) {
     return addNominal?.call(nominal);
   }
@@ -446,6 +486,8 @@ class _$AddNominalImpl implements _AddNominal {
     TResult Function(String paymentMethod, List<OrderItem> items)?
         addPaymentMethod,
     TResult Function(int nominal)? addNominal,
+    TResult Function(int fee)? addServiceFee,
+    TResult Function(String name)? addOrderName,
     required TResult orElse(),
   }) {
     if (addNominal != null) {
@@ -460,6 +502,8 @@ class _$AddNominalImpl implements _AddNominal {
     required TResult Function(_Started value) started,
     required TResult Function(_AddPaymentMethod value) addPaymentMethod,
     required TResult Function(_AddNominal value) addNominal,
+    required TResult Function(_AddServiceFee value) addServiceFee,
+    required TResult Function(_AddOrderName value) addOrderName,
   }) {
     return addNominal(this);
   }
@@ -470,6 +514,8 @@ class _$AddNominalImpl implements _AddNominal {
     TResult? Function(_Started value)? started,
     TResult? Function(_AddPaymentMethod value)? addPaymentMethod,
     TResult? Function(_AddNominal value)? addNominal,
+    TResult? Function(_AddServiceFee value)? addServiceFee,
+    TResult? Function(_AddOrderName value)? addOrderName,
   }) {
     return addNominal?.call(this);
   }
@@ -480,6 +526,8 @@ class _$AddNominalImpl implements _AddNominal {
     TResult Function(_Started value)? started,
     TResult Function(_AddPaymentMethod value)? addPaymentMethod,
     TResult Function(_AddNominal value)? addNominal,
+    TResult Function(_AddServiceFee value)? addServiceFee,
+    TResult Function(_AddOrderName value)? addOrderName,
     required TResult orElse(),
   }) {
     if (addNominal != null) {
@@ -499,13 +547,327 @@ abstract class _AddNominal implements OrderEvent {
 }
 
 /// @nodoc
+abstract class _$$AddServiceFeeImplCopyWith<$Res> {
+  factory _$$AddServiceFeeImplCopyWith(
+          _$AddServiceFeeImpl value, $Res Function(_$AddServiceFeeImpl) then) =
+      __$$AddServiceFeeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int fee});
+}
+
+/// @nodoc
+class __$$AddServiceFeeImplCopyWithImpl<$Res>
+    extends _$OrderEventCopyWithImpl<$Res, _$AddServiceFeeImpl>
+    implements _$$AddServiceFeeImplCopyWith<$Res> {
+  __$$AddServiceFeeImplCopyWithImpl(
+      _$AddServiceFeeImpl _value, $Res Function(_$AddServiceFeeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? fee = null,
+  }) {
+    return _then(_$AddServiceFeeImpl(
+      null == fee
+          ? _value.fee
+          : fee // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddServiceFeeImpl implements _AddServiceFee {
+  const _$AddServiceFeeImpl(this.fee);
+
+  @override
+  final int fee;
+
+  @override
+  String toString() {
+    return 'OrderEvent.addServiceFee(fee: $fee)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddServiceFeeImpl &&
+            (identical(other.fee, fee) || other.fee == fee));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, fee);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddServiceFeeImplCopyWith<_$AddServiceFeeImpl> get copyWith =>
+      __$$AddServiceFeeImplCopyWithImpl<_$AddServiceFeeImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String paymentMethod, List<OrderItem> items)
+        addPaymentMethod,
+    required TResult Function(int nominal) addNominal,
+    required TResult Function(int fee) addServiceFee,
+    required TResult Function(String name) addOrderName,
+  }) {
+    return addServiceFee(fee);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String paymentMethod, List<OrderItem> items)?
+        addPaymentMethod,
+    TResult? Function(int nominal)? addNominal,
+    TResult? Function(int fee)? addServiceFee,
+    TResult? Function(String name)? addOrderName,
+  }) {
+    return addServiceFee?.call(fee);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String paymentMethod, List<OrderItem> items)?
+        addPaymentMethod,
+    TResult Function(int nominal)? addNominal,
+    TResult Function(int fee)? addServiceFee,
+    TResult Function(String name)? addOrderName,
+    required TResult orElse(),
+  }) {
+    if (addServiceFee != null) {
+      return addServiceFee(fee);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_AddPaymentMethod value) addPaymentMethod,
+    required TResult Function(_AddNominal value) addNominal,
+    required TResult Function(_AddServiceFee value) addServiceFee,
+    required TResult Function(_AddOrderName value) addOrderName,
+  }) {
+    return addServiceFee(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_AddPaymentMethod value)? addPaymentMethod,
+    TResult? Function(_AddNominal value)? addNominal,
+    TResult? Function(_AddServiceFee value)? addServiceFee,
+    TResult? Function(_AddOrderName value)? addOrderName,
+  }) {
+    return addServiceFee?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_AddPaymentMethod value)? addPaymentMethod,
+    TResult Function(_AddNominal value)? addNominal,
+    TResult Function(_AddServiceFee value)? addServiceFee,
+    TResult Function(_AddOrderName value)? addOrderName,
+    required TResult orElse(),
+  }) {
+    if (addServiceFee != null) {
+      return addServiceFee(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddServiceFee implements OrderEvent {
+  const factory _AddServiceFee(final int fee) = _$AddServiceFeeImpl;
+
+  int get fee;
+  @JsonKey(ignore: true)
+  _$$AddServiceFeeImplCopyWith<_$AddServiceFeeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddOrderNameImplCopyWith<$Res> {
+  factory _$$AddOrderNameImplCopyWith(
+          _$AddOrderNameImpl value, $Res Function(_$AddOrderNameImpl) then) =
+      __$$AddOrderNameImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String name});
+}
+
+/// @nodoc
+class __$$AddOrderNameImplCopyWithImpl<$Res>
+    extends _$OrderEventCopyWithImpl<$Res, _$AddOrderNameImpl>
+    implements _$$AddOrderNameImplCopyWith<$Res> {
+  __$$AddOrderNameImplCopyWithImpl(
+      _$AddOrderNameImpl _value, $Res Function(_$AddOrderNameImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+  }) {
+    return _then(_$AddOrderNameImpl(
+      null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddOrderNameImpl implements _AddOrderName {
+  const _$AddOrderNameImpl(this.name);
+
+  @override
+  final String name;
+
+  @override
+  String toString() {
+    return 'OrderEvent.addOrderName(name: $name)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddOrderNameImpl &&
+            (identical(other.name, name) || other.name == name));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, name);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddOrderNameImplCopyWith<_$AddOrderNameImpl> get copyWith =>
+      __$$AddOrderNameImplCopyWithImpl<_$AddOrderNameImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String paymentMethod, List<OrderItem> items)
+        addPaymentMethod,
+    required TResult Function(int nominal) addNominal,
+    required TResult Function(int fee) addServiceFee,
+    required TResult Function(String name) addOrderName,
+  }) {
+    return addOrderName(name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String paymentMethod, List<OrderItem> items)?
+        addPaymentMethod,
+    TResult? Function(int nominal)? addNominal,
+    TResult? Function(int fee)? addServiceFee,
+    TResult? Function(String name)? addOrderName,
+  }) {
+    return addOrderName?.call(name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String paymentMethod, List<OrderItem> items)?
+        addPaymentMethod,
+    TResult Function(int nominal)? addNominal,
+    TResult Function(int fee)? addServiceFee,
+    TResult Function(String name)? addOrderName,
+    required TResult orElse(),
+  }) {
+    if (addOrderName != null) {
+      return addOrderName(name);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_AddPaymentMethod value) addPaymentMethod,
+    required TResult Function(_AddNominal value) addNominal,
+    required TResult Function(_AddServiceFee value) addServiceFee,
+    required TResult Function(_AddOrderName value) addOrderName,
+  }) {
+    return addOrderName(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_AddPaymentMethod value)? addPaymentMethod,
+    TResult? Function(_AddNominal value)? addNominal,
+    TResult? Function(_AddServiceFee value)? addServiceFee,
+    TResult? Function(_AddOrderName value)? addOrderName,
+  }) {
+    return addOrderName?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_AddPaymentMethod value)? addPaymentMethod,
+    TResult Function(_AddNominal value)? addNominal,
+    TResult Function(_AddServiceFee value)? addServiceFee,
+    TResult Function(_AddOrderName value)? addOrderName,
+    required TResult orElse(),
+  }) {
+    if (addOrderName != null) {
+      return addOrderName(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddOrderName implements OrderEvent {
+  const factory _AddOrderName(final String name) = _$AddOrderNameImpl;
+
+  String get name;
+  @JsonKey(ignore: true)
+  _$$AddOrderNameImplCopyWith<_$AddOrderNameImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$OrderState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<OrderItem> items, int totalQty,
-            int totalPrice, String paymentMethod, int nominal)
+    required TResult Function(
+            List<OrderItem> items,
+            int totalQty,
+            int totalPrice,
+            String paymentMethod,
+            int nominal,
+            int serviceFee,
+            String orderName)
         success,
     required TResult Function() error,
   }) =>
@@ -514,8 +876,14 @@ mixin _$OrderState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<OrderItem> items, int totalQty, int totalPrice,
-            String paymentMethod, int nominal)?
+    TResult? Function(
+            List<OrderItem> items,
+            int totalQty,
+            int totalPrice,
+            String paymentMethod,
+            int nominal,
+            int serviceFee,
+            String orderName)?
         success,
     TResult? Function()? error,
   }) =>
@@ -524,8 +892,14 @@ mixin _$OrderState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<OrderItem> items, int totalQty, int totalPrice,
-            String paymentMethod, int nominal)?
+    TResult Function(
+            List<OrderItem> items,
+            int totalQty,
+            int totalPrice,
+            String paymentMethod,
+            int nominal,
+            int serviceFee,
+            String orderName)?
         success,
     TResult Function()? error,
     required TResult orElse(),
@@ -616,8 +990,14 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<OrderItem> items, int totalQty,
-            int totalPrice, String paymentMethod, int nominal)
+    required TResult Function(
+            List<OrderItem> items,
+            int totalQty,
+            int totalPrice,
+            String paymentMethod,
+            int nominal,
+            int serviceFee,
+            String orderName)
         success,
     required TResult Function() error,
   }) {
@@ -629,8 +1009,14 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<OrderItem> items, int totalQty, int totalPrice,
-            String paymentMethod, int nominal)?
+    TResult? Function(
+            List<OrderItem> items,
+            int totalQty,
+            int totalPrice,
+            String paymentMethod,
+            int nominal,
+            int serviceFee,
+            String orderName)?
         success,
     TResult? Function()? error,
   }) {
@@ -642,8 +1028,14 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<OrderItem> items, int totalQty, int totalPrice,
-            String paymentMethod, int nominal)?
+    TResult Function(
+            List<OrderItem> items,
+            int totalQty,
+            int totalPrice,
+            String paymentMethod,
+            int nominal,
+            int serviceFee,
+            String orderName)?
         success,
     TResult Function()? error,
     required TResult orElse(),
@@ -736,8 +1128,14 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<OrderItem> items, int totalQty,
-            int totalPrice, String paymentMethod, int nominal)
+    required TResult Function(
+            List<OrderItem> items,
+            int totalQty,
+            int totalPrice,
+            String paymentMethod,
+            int nominal,
+            int serviceFee,
+            String orderName)
         success,
     required TResult Function() error,
   }) {
@@ -749,8 +1147,14 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<OrderItem> items, int totalQty, int totalPrice,
-            String paymentMethod, int nominal)?
+    TResult? Function(
+            List<OrderItem> items,
+            int totalQty,
+            int totalPrice,
+            String paymentMethod,
+            int nominal,
+            int serviceFee,
+            String orderName)?
         success,
     TResult? Function()? error,
   }) {
@@ -762,8 +1166,14 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<OrderItem> items, int totalQty, int totalPrice,
-            String paymentMethod, int nominal)?
+    TResult Function(
+            List<OrderItem> items,
+            int totalQty,
+            int totalPrice,
+            String paymentMethod,
+            int nominal,
+            int serviceFee,
+            String orderName)?
         success,
     TResult Function()? error,
     required TResult orElse(),
@@ -827,7 +1237,9 @@ abstract class _$$SuccessImplCopyWith<$Res> {
       int totalQty,
       int totalPrice,
       String paymentMethod,
-      int nominal});
+      int nominal,
+      int serviceFee,
+      String orderName});
 }
 
 /// @nodoc
@@ -846,6 +1258,8 @@ class __$$SuccessImplCopyWithImpl<$Res>
     Object? totalPrice = null,
     Object? paymentMethod = null,
     Object? nominal = null,
+    Object? serviceFee = null,
+    Object? orderName = null,
   }) {
     return _then(_$SuccessImpl(
       null == items
@@ -868,6 +1282,14 @@ class __$$SuccessImplCopyWithImpl<$Res>
           ? _value.nominal
           : nominal // ignore: cast_nullable_to_non_nullable
               as int,
+      null == serviceFee
+          ? _value.serviceFee
+          : serviceFee // ignore: cast_nullable_to_non_nullable
+              as int,
+      null == orderName
+          ? _value.orderName
+          : orderName // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -875,8 +1297,14 @@ class __$$SuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(final List<OrderItem> items, this.totalQty,
-      this.totalPrice, this.paymentMethod, this.nominal)
+  const _$SuccessImpl(
+      final List<OrderItem> items,
+      this.totalQty,
+      this.totalPrice,
+      this.paymentMethod,
+      this.nominal,
+      this.serviceFee,
+      this.orderName)
       : _items = items;
 
   final List<OrderItem> _items;
@@ -895,10 +1323,14 @@ class _$SuccessImpl implements _Success {
   final String paymentMethod;
   @override
   final int nominal;
+  @override
+  final int serviceFee;
+  @override
+  final String orderName;
 
   @override
   String toString() {
-    return 'OrderState.success(items: $items, totalQty: $totalQty, totalPrice: $totalPrice, paymentMethod: $paymentMethod, nominal: $nominal)';
+    return 'OrderState.success(items: $items, totalQty: $totalQty, totalPrice: $totalPrice, paymentMethod: $paymentMethod, nominal: $nominal, serviceFee: $serviceFee, orderName: $orderName)';
   }
 
   @override
@@ -913,7 +1345,11 @@ class _$SuccessImpl implements _Success {
                 other.totalPrice == totalPrice) &&
             (identical(other.paymentMethod, paymentMethod) ||
                 other.paymentMethod == paymentMethod) &&
-            (identical(other.nominal, nominal) || other.nominal == nominal));
+            (identical(other.nominal, nominal) || other.nominal == nominal) &&
+            (identical(other.serviceFee, serviceFee) ||
+                other.serviceFee == serviceFee) &&
+            (identical(other.orderName, orderName) ||
+                other.orderName == orderName));
   }
 
   @override
@@ -923,7 +1359,9 @@ class _$SuccessImpl implements _Success {
       totalQty,
       totalPrice,
       paymentMethod,
-      nominal);
+      nominal,
+      serviceFee,
+      orderName);
 
   @JsonKey(ignore: true)
   @override
@@ -936,12 +1374,19 @@ class _$SuccessImpl implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<OrderItem> items, int totalQty,
-            int totalPrice, String paymentMethod, int nominal)
+    required TResult Function(
+            List<OrderItem> items,
+            int totalQty,
+            int totalPrice,
+            String paymentMethod,
+            int nominal,
+            int serviceFee,
+            String orderName)
         success,
     required TResult Function() error,
   }) {
-    return success(items, totalQty, totalPrice, paymentMethod, nominal);
+    return success(items, totalQty, totalPrice, paymentMethod, nominal,
+        serviceFee, orderName);
   }
 
   @override
@@ -949,12 +1394,19 @@ class _$SuccessImpl implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<OrderItem> items, int totalQty, int totalPrice,
-            String paymentMethod, int nominal)?
+    TResult? Function(
+            List<OrderItem> items,
+            int totalQty,
+            int totalPrice,
+            String paymentMethod,
+            int nominal,
+            int serviceFee,
+            String orderName)?
         success,
     TResult? Function()? error,
   }) {
-    return success?.call(items, totalQty, totalPrice, paymentMethod, nominal);
+    return success?.call(items, totalQty, totalPrice, paymentMethod, nominal,
+        serviceFee, orderName);
   }
 
   @override
@@ -962,14 +1414,21 @@ class _$SuccessImpl implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<OrderItem> items, int totalQty, int totalPrice,
-            String paymentMethod, int nominal)?
+    TResult Function(
+            List<OrderItem> items,
+            int totalQty,
+            int totalPrice,
+            String paymentMethod,
+            int nominal,
+            int serviceFee,
+            String orderName)?
         success,
     TResult Function()? error,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(items, totalQty, totalPrice, paymentMethod, nominal);
+      return success(items, totalQty, totalPrice, paymentMethod, nominal,
+          serviceFee, orderName);
     }
     return orElse();
   }
@@ -1018,13 +1477,17 @@ abstract class _Success implements OrderState {
       final int totalQty,
       final int totalPrice,
       final String paymentMethod,
-      final int nominal) = _$SuccessImpl;
+      final int nominal,
+      final int serviceFee,
+      final String orderName) = _$SuccessImpl;
 
   List<OrderItem> get items;
   int get totalQty;
   int get totalPrice;
   String get paymentMethod;
   int get nominal;
+  int get serviceFee;
+  String get orderName;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1070,8 +1533,14 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<OrderItem> items, int totalQty,
-            int totalPrice, String paymentMethod, int nominal)
+    required TResult Function(
+            List<OrderItem> items,
+            int totalQty,
+            int totalPrice,
+            String paymentMethod,
+            int nominal,
+            int serviceFee,
+            String orderName)
         success,
     required TResult Function() error,
   }) {
@@ -1083,8 +1552,14 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<OrderItem> items, int totalQty, int totalPrice,
-            String paymentMethod, int nominal)?
+    TResult? Function(
+            List<OrderItem> items,
+            int totalQty,
+            int totalPrice,
+            String paymentMethod,
+            int nominal,
+            int serviceFee,
+            String orderName)?
         success,
     TResult? Function()? error,
   }) {
@@ -1096,8 +1571,14 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<OrderItem> items, int totalQty, int totalPrice,
-            String paymentMethod, int nominal)?
+    TResult Function(
+            List<OrderItem> items,
+            int totalQty,
+            int totalPrice,
+            String paymentMethod,
+            int nominal,
+            int serviceFee,
+            String orderName)?
         success,
     TResult Function()? error,
     required TResult orElse(),

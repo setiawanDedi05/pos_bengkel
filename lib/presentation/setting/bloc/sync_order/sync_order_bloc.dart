@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pos_bengkel/data/datasources/product_local_datasource.dart';
@@ -19,9 +20,10 @@ class SyncOrderBloc extends Bloc<SyncOrderEvent, SyncOrderState> {
     on<_SyncOrder>((event, emit) async {
       emit(const _Loading());
       final data = await ProductLocalDataSource.instance.getOrderNotSync();
-      if(data.isEmpty){
+      if (data.isEmpty) {
         emit(const _Error("Semua data order terupdate"));
-      }else{
+      } else {
+        bool isResponseTrue = false;
         for (var item in data) {
           item.items = await ProductLocalDataSource.instance
               .getOrderItemByOrderId(item.id!);
@@ -35,11 +37,52 @@ class SyncOrderBloc extends Bloc<SyncOrderEvent, SyncOrderState> {
                 item.items.map((x) => OrderItemRequest.fromOrderItemModel(x))),
           );
           final response = await orderRemoteDatasource.syncOrder(request);
-          if(response){
-            await ProductLocalDataSource.instance.updateIsSyncOrderById(item.id!);
+          if (response) {
+            await ProductLocalDataSource.instance
+                .updateIsSyncOrderById(item.id!);
+            isResponseTrue = true;
+          } else {
+            isResponseTrue = false;
           }
         }
+        isResponseTrue
+            ? emit(const _Success())
+            : emit(const _Error("Internal Server Error"));
+      }
+    });
+
+    on<_SyncOrderById>((event, emit) async {
+      emit(const _Loading());
+      try {
+        //cari dulu order berdasarkan id
+        final data = await ProductLocalDataSource.instance.getOrderById(event.id);
+        /**
+         *
+          karena data item itu pasti kosong maka isi dulu itemnya dengan data yang ada di order items
+         */
+        data?.items = await ProductLocalDataSource.instance
+            .getOrderItemByOrderId(data.id!);
+        // jadiin object buat disync ke server
+        final OrderRequestModel request = OrderRequestModel(
+          transactionTime: data!.transactionTime,
+          idCashier: data.idCashier.toString(),
+          totalPrice: data.totalPrice,
+          totalQty: data.totalQty,
+          paymentMethod: data.paymentMethod.toLowerCase(),
+          orderItems: List<OrderItemRequest>.from(
+              data.items.map((x) => OrderItemRequest.fromOrderItemModel(x))),
+        );
+        //dimasukan ke variable response untuk check apakan proses sync berhasil
+        final response = await orderRemoteDatasource.syncOrder(request);
+        // jika berhasil update local order dengan sync is true
+        if (response) {
+          await ProductLocalDataSource.instance
+              .updateIsSyncOrderById(event.id);
+        }
         emit(const _Success());
+      } catch (error) {
+        debugPrint(error.toString());
+        emit(const _Error("Internal Server Error"));
       }
     });
   }

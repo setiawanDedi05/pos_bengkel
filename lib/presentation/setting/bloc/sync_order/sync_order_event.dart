@@ -4,4 +4,5 @@ part of 'sync_order_bloc.dart';
 class SyncOrderEvent with _$SyncOrderEvent {
   const factory SyncOrderEvent.started() = _Started;
   const factory SyncOrderEvent.syncOrder() = _SyncOrder;
+  const factory SyncOrderEvent.syncOrderById(int id) = _SyncOrderById;
 }

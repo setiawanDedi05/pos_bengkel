@@ -48,8 +48,6 @@ class ProductItem extends StatelessWidget {
           borderRadius: const BorderRadius.all(Radius.circular(10.0)),
           child: CachedNetworkImage(
             imageUrl: "${Variables.imageBaseUrl}${data.image}",
-            progressIndicatorBuilder: (context, url, downloadProgress) =>
-                CircularProgressIndicator(value: downloadProgress.progress),
             errorWidget: (context, url, error) => const Icon(
               Icons.error,
               size: 54,

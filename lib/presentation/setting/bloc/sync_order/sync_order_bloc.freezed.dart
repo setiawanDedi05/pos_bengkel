@@ -20,18 +20,21 @@ mixin _$SyncOrderEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() syncOrder,
+    required TResult Function(int id) syncOrderById,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? syncOrder,
+    TResult? Function(int id)? syncOrderById,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? syncOrder,
+    TResult Function(int id)? syncOrderById,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$SyncOrderEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_SyncOrder value) syncOrder,
+    required TResult Function(_SyncOrderById value) syncOrderById,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_SyncOrder value)? syncOrder,
+    TResult? Function(_SyncOrderById value)? syncOrderById,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_SyncOrder value)? syncOrder,
+    TResult Function(_SyncOrderById value)? syncOrderById,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +120,7 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() syncOrder,
+    required TResult Function(int id) syncOrderById,
   }) {
     return started();
   }
@@ -123,6 +130,7 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? syncOrder,
+    TResult? Function(int id)? syncOrderById,
   }) {
     return started?.call();
   }
@@ -132,6 +140,7 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? syncOrder,
+    TResult Function(int id)? syncOrderById,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -145,6 +154,7 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_SyncOrder value) syncOrder,
+    required TResult Function(_SyncOrderById value) syncOrderById,
   }) {
     return started(this);
   }
@@ -154,6 +164,7 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_SyncOrder value)? syncOrder,
+    TResult? Function(_SyncOrderById value)? syncOrderById,
   }) {
     return started?.call(this);
   }
@@ -163,6 +174,7 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_SyncOrder value)? syncOrder,
+    TResult Function(_SyncOrderById value)? syncOrderById,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -216,6 +228,7 @@ class _$SyncOrderImpl implements _SyncOrder {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() syncOrder,
+    required TResult Function(int id) syncOrderById,
   }) {
     return syncOrder();
   }
@@ -225,6 +238,7 @@ class _$SyncOrderImpl implements _SyncOrder {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? syncOrder,
+    TResult? Function(int id)? syncOrderById,
   }) {
     return syncOrder?.call();
   }
@@ -234,6 +248,7 @@ class _$SyncOrderImpl implements _SyncOrder {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? syncOrder,
+    TResult Function(int id)? syncOrderById,
     required TResult orElse(),
   }) {
     if (syncOrder != null) {
@@ -247,6 +262,7 @@ class _$SyncOrderImpl implements _SyncOrder {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_SyncOrder value) syncOrder,
+    required TResult Function(_SyncOrderById value) syncOrderById,
   }) {
     return syncOrder(this);
   }
@@ -256,6 +272,7 @@ class _$SyncOrderImpl implements _SyncOrder {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_SyncOrder value)? syncOrder,
+    TResult? Function(_SyncOrderById value)? syncOrderById,
   }) {
     return syncOrder?.call(this);
   }
@@ -265,6 +282,7 @@ class _$SyncOrderImpl implements _SyncOrder {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_SyncOrder value)? syncOrder,
+    TResult Function(_SyncOrderById value)? syncOrderById,
     required TResult orElse(),
   }) {
     if (syncOrder != null) {
@@ -276,6 +294,145 @@ class _$SyncOrderImpl implements _SyncOrder {
 
 abstract class _SyncOrder implements SyncOrderEvent {
   const factory _SyncOrder() = _$SyncOrderImpl;
+}
+
+/// @nodoc
+abstract class _$$SyncOrderByIdImplCopyWith<$Res> {
+  factory _$$SyncOrderByIdImplCopyWith(
+          _$SyncOrderByIdImpl value, $Res Function(_$SyncOrderByIdImpl) then) =
+      __$$SyncOrderByIdImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int id});
+}
+
+/// @nodoc
+class __$$SyncOrderByIdImplCopyWithImpl<$Res>
+    extends _$SyncOrderEventCopyWithImpl<$Res, _$SyncOrderByIdImpl>
+    implements _$$SyncOrderByIdImplCopyWith<$Res> {
+  __$$SyncOrderByIdImplCopyWithImpl(
+      _$SyncOrderByIdImpl _value, $Res Function(_$SyncOrderByIdImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$SyncOrderByIdImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SyncOrderByIdImpl implements _SyncOrderById {
+  const _$SyncOrderByIdImpl(this.id);
+
+  @override
+  final int id;
+
+  @override
+  String toString() {
+    return 'SyncOrderEvent.syncOrderById(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SyncOrderByIdImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SyncOrderByIdImplCopyWith<_$SyncOrderByIdImpl> get copyWith =>
+      __$$SyncOrderByIdImplCopyWithImpl<_$SyncOrderByIdImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() syncOrder,
+    required TResult Function(int id) syncOrderById,
+  }) {
+    return syncOrderById(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? syncOrder,
+    TResult? Function(int id)? syncOrderById,
+  }) {
+    return syncOrderById?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? syncOrder,
+    TResult Function(int id)? syncOrderById,
+    required TResult orElse(),
+  }) {
+    if (syncOrderById != null) {
+      return syncOrderById(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_SyncOrder value) syncOrder,
+    required TResult Function(_SyncOrderById value) syncOrderById,
+  }) {
+    return syncOrderById(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_SyncOrder value)? syncOrder,
+    TResult? Function(_SyncOrderById value)? syncOrderById,
+  }) {
+    return syncOrderById?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_SyncOrder value)? syncOrder,
+    TResult Function(_SyncOrderById value)? syncOrderById,
+    required TResult orElse(),
+  }) {
+    if (syncOrderById != null) {
+      return syncOrderById(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SyncOrderById implements SyncOrderEvent {
+  const factory _SyncOrderById(final int id) = _$SyncOrderByIdImpl;
+
+  int get id;
+  @JsonKey(ignore: true)
+  _$$SyncOrderByIdImplCopyWith<_$SyncOrderByIdImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

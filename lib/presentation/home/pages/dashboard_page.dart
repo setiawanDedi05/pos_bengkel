@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pos_bengkel/presentation/draft_order/pages/draft_order_page.dart';
 import 'package:pos_bengkel/presentation/home/pages/home_page.dart';
 import 'package:pos_bengkel/presentation/order/pages/order_page.dart';
 import 'package:pos_bengkel/presentation/setting/pages/setting_page.dart';
@@ -25,6 +26,7 @@ class _DashboardPageState extends State<DashboardPage> {
   final List<Widget> _pages = [
     const HomePage(),
     const OrderPage(),
+    const DraftOrderPage(),
     const HistoryTransactionPage(),
     const SettingPage()
   ];
@@ -74,16 +76,24 @@ class _DashboardPageState extends State<DashboardPage> {
                   // context.push(const OrdersPage());
                 }),
             NavItem(
+                iconPath: Assets.icons.draftCart.path,
+                label: 'Draft Orders',
+                isActive: _selectedIndex == 2,
+                onTap: () {
+                  _onItemTapped(2);
+                  // context.push(const OrdersPage());
+                }),
+            NavItem(
               iconPath: Assets.icons.payments.path,
               label: 'History',
-              isActive: _selectedIndex == 2,
-              onTap: () => _onItemTapped(2),
+              isActive: _selectedIndex == 3,
+              onTap: () => _onItemTapped(3),
             ),
             NavItem(
               iconPath: Assets.icons.dashboard.path,
               label: 'Kelola',
-              isActive: _selectedIndex == 3,
-              onTap: () => _onItemTapped(3),
+              isActive: _selectedIndex == 4,
+              onTap: () => _onItemTapped(4),
             ),
           ],
         ),
